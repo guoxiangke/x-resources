@@ -10,6 +10,9 @@ php: error while loading shared libraries: libssl.so.10: cannot open shared obje
     https://github.com/vercel-community/php/issues/504
     I'm having the same issue because default node version is set to 20. It works after changed to 18.
 
+Add 'scheme' => 'tls',
+
+
 Vercel PATH = /var/task/user/api/README.md
 php.ini
 	curl.cainfo="/var/task/user/cacert.pem"

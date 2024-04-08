@@ -30,5 +30,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'febc' => [
+        'all_json_domain' => env('RESOURCE_ALL_JSON_DOMAIN', 'https://hylt.azureedge.net/jso/')
+    ],
 
 ];
