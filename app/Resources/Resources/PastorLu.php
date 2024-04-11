@@ -81,7 +81,7 @@ final class PastorLu{
 
 
     private function _getData(){
-            $date = date('ymd');
+            $date = now()->tz('Asia/Hong_Kong')->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -166,7 +166,7 @@ final class PastorLu{
 
 
     private function _getLastSundayData(){
-            $date = date('ymd');
+            $date = now()->tz('Asia/Hong_Kong')->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu.lastSunday";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -577,7 +577,7 @@ final class PastorLu{
             "1225"=>["vid"=>"BeBJkNBaEJQ","title"=>"圣经里最后的祷告- 经文：启示录21-22章"],
             "1226"=>["vid"=>"1ivg__tN6vE","title"=>"终章完结"],
         ];
-        $dateStr = date('md');
+        $dateStr = now()->tz('Asia/Hong_Kong')->format('md');
         if(!isset($items[$dateStr])) {
             $item = last($items);
         }else{
