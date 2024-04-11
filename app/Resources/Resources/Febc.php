@@ -87,15 +87,15 @@ final class Febc {
             $jdata = last($json);
 
             $dateStr = date('ymd');
-            if(now()->isWeekend() && in_array($keyword,['708','710','711'])){
+            if(now()->tz('Asia/Hong_Kong')->isWeekend() && in_array($keyword,['708','710','711'])){
                $dateStr = substr($jdata['time'], 2); 
             }
 
-            if(now()->isWeekday() && in_array($keyword,['712'])){
+            if(now()->tz('Asia/Hong_Kong')->isWeekday() && in_array($keyword,['712'])){
                $dateStr = substr($jdata['time'], 2); 
             }
 
-            if(!(now()->isMonday() || now()->isTuesday()) && in_array($keyword,['713'])){
+            if(!(now()->tz('Asia/Hong_Kong')->isMonday() || now()->tz('Asia/Hong_Kong')->isTuesday()) && in_array($keyword,['713'])){
                $dateStr = substr($jdata['time'], 2);
             }
 
