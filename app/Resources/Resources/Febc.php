@@ -86,7 +86,7 @@ final class Febc {
             $json =$response->json();
             $jdata = last($json);
 
-            $dateStr = date('ymd');
+            $dateStr = now()->tz('Asia/Hong_Kong')->format('ymd');
             if(now()->tz('Asia/Hong_Kong')->isWeekend() && in_array($keyword,['708','710','711'])){
                $dateStr = substr($jdata['time'], 2); 
             }
