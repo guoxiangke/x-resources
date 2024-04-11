@@ -94,7 +94,7 @@ final class PastorLu{
                 preg_match_all($re, $html, $matches);
                 
 
-                $day = now()->format('md');
+                $day = now()->tz('Asia/Hong_Kong')->format('md');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
