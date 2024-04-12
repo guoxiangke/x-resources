@@ -22,16 +22,15 @@ final class FWD{
             $cacheKey = "xbot.keyword.".$keyword;
             $data = Cache::get($cacheKey, false);
             if(!$data){
-                $whichDay = now();//->subDays();
-                $url = $whichDay->format('/Y/m/');
+                $whichDay = now()->tz(config('app.timezone_display'));//->subDays();
                 $year = $whichDay->format('Y');
                 $date = $whichDay->format('ymd');
 
                 // 正常每天有3个音频，周六日只有c音频
                 $domain = env('R2_SHARE')."/fwd";
-                $mp3a = "{$domain}/".date('Y')."/fwd{$date}_a.mp3";
-                $mp3b = "{$domain}/".date('Y')."/fwd{$date}_b.mp3";
-                $mp3c = "{$domain}/".date('Y')."/fwd{$date}_c.mp3";
+                $mp3a = "{$domain}/".$year."/fwd{$date}_a.mp3";
+                $mp3b = "{$domain}/".$year."/fwd{$date}_b.mp3";
+                $mp3c = "{$domain}/".$year."/fwd{$date}_c.mp3";
                 $image = 'https://share.simai.life/uPic/2022/Of6qHa.jpg';
 
 

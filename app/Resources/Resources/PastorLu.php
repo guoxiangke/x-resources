@@ -22,10 +22,10 @@ final class PastorLu{
             return $this->getByDate();
             $data = $this->_getData();
             $vid = $data['data']['vid'];
-            $data['data']['url'] = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".mp4";
+            $data['data']['url'] = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
 
             // Add audio
-            $m4a = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".m4a";
+            $m4a = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".m4a";
             $addition = $data;
             $addition['type'] = 'music';
             $addition['data']['url']= $m4a;
@@ -53,10 +53,10 @@ final class PastorLu{
                 $data = $this->_getLastSundayData();
 
                 $vid = $data['data']['vid'];
-                $data['data']['url'] = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".mp4";
+                $data['data']['url'] = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
 
                 // Add audio
-                $m4a = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".m4a";
+                $m4a = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".m4a";
                 $addition = $data;
                 $addition['type'] = 'music';
                 $addition['data']['url']= $m4a;
@@ -81,7 +81,7 @@ final class PastorLu{
 
 
     private function _getData(){
-            $date = now()->tz('Asia/Hong_Kong')->format('ymd');
+            $date = now()->tz(config('app.timezone_display'))->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -94,7 +94,7 @@ final class PastorLu{
                 preg_match_all($re, $html, $matches);
                 
 
-                $day = now()->tz('Asia/Hong_Kong')->format('md');
+                $day = now()->tz(config('app.timezone_display'))->format('md');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
@@ -166,7 +166,7 @@ final class PastorLu{
 
 
     private function _getLastSundayData(){
-            $date = now()->tz('Asia/Hong_Kong')->format('ymd');
+            $date = now()->tz(config('app.timezone_display'))->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu.lastSunday";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -577,7 +577,7 @@ final class PastorLu{
             "1225"=>["vid"=>"BeBJkNBaEJQ","title"=>"圣经里最后的祷告- 经文：启示录21-22章"],
             "1226"=>["vid"=>"1ivg__tN6vE","title"=>"终章完结"],
         ];
-        $dateStr = now()->tz('Asia/Hong_Kong')->format('md');
+        $dateStr = now()->tz(config('app.timezone_display'))->format('md');
         if(!isset($items[$dateStr])) {
             $item = last($items);
         }else{
@@ -585,7 +585,7 @@ final class PastorLu{
         }
 
         $vid = $item['vid'];
-        $url = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".mp4";
+        $url = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
         $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
         $data = [
             'type' => 'link',
@@ -603,7 +603,7 @@ final class PastorLu{
             ]
         ];
 
-        $m4a = env('R2_SHARE')."/@pastorpaulqiankunlu618/".$vid.".m4a";
+        $m4a = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".m4a";
         $addition = $data;
         $addition['type'] = 'music';
         $addition['data']['url']= $m4a;

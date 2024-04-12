@@ -12,7 +12,7 @@ use voku\helper\HtmlDomParser;
 final class Wallstreetcn{
 	public function _invoke($keyword) {
         if($keyword == "华尔街见闻早餐"){
-            $date = date('ymd');
+            $date = now()->tz(config('app.timezone_display'))->format('ymd');
             $cacheKey = "xbot.keyword.Wallstreetcn";
             $data = Cache::get($cacheKey, false);
             if(!$data){

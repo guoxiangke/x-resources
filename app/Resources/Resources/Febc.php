@@ -86,16 +86,16 @@ final class Febc {
             $json =$response->json();
             $jdata = last($json);
 
-            $dateStr = now()->tz('Asia/Hong_Kong')->format('ymd');
-            if(now()->tz('Asia/Hong_Kong')->isWeekend() && in_array($keyword,['708','710','711'])){
+            $dateStr = now()->tz(config('app.timezone_display'))->format('ymd');
+            if(now()->tz(config('app.timezone_display'))->isWeekend() && in_array($keyword,['708','710','711'])){
                $dateStr = substr($jdata['time'], 2); 
             }
 
-            if(now()->tz('Asia/Hong_Kong')->isWeekday() && in_array($keyword,['712'])){
+            if(now()->tz(config('app.timezone_display'))->isWeekday() && in_array($keyword,['712'])){
                $dateStr = substr($jdata['time'], 2); 
             }
 
-            if(!(now()->tz('Asia/Hong_Kong')->isMonday() || now()->tz('Asia/Hong_Kong')->isTuesday()) && in_array($keyword,['713'])){
+            if(!(now()->tz(config('app.timezone_display'))->isMonday() || now()->tz(config('app.timezone_display'))->isTuesday()) && in_array($keyword,['713'])){
                $dateStr = substr($jdata['time'], 2);
             }
 
