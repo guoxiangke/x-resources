@@ -27,7 +27,7 @@ final class FWD{
                 $date = $whichDay->format('ymd');
 
                 // 正常每天有3个音频，周六日只有c音频
-                $domain = env('R2_SHARE')."/fwd";
+                $domain = env('R2_SHARE_AUDIO')."/fwd";
                 $mp3a = "{$domain}/".$year."/fwd{$date}_a.mp3";
                 $mp3b = "{$domain}/".$year."/fwd{$date}_b.mp3";
                 $mp3c = "{$domain}/".$year."/fwd{$date}_c.mp3";
@@ -136,7 +136,7 @@ final class FWD{
             }
             
             $vid = $matches[2][$lastSundayIndex];
-            $channelDomain = env('R2_SHARE')."/@fwdforwardchurch7991/";
+            $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
             $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
 
@@ -188,7 +188,7 @@ final class FWD{
             }
             
             $vid = $matches[2][$lastSundayIndex];
-            $channelDomain = env('R2_SHARE')."/@fwdforwardchurch7991/";
+            $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
             $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
 
@@ -234,7 +234,7 @@ final class FWD{
             
             $vid = $matches[2][0];
             $title = $matches[1][0];
-            $channelDomain = env('R2_SHARE')."/@user-om4ne5gh7e/";
+            $channelDomain = env('R2_SHARE_AUDIO')."/@user-om4ne5gh7e/";
             $url = $channelDomain.$vid.".mp4";
             $image = 'https://share.simai.life/uPic/2023/ZXRsRu.jpg';
             $data = [
@@ -275,7 +275,7 @@ final class FWD{
             // return $matches['snippet'];
             $vid = $matches['contentDetails']['videoId'];
             $title = $matches['snippet']['title'];
-            $channelDomain = env('R2_SHARE')."/@fwdforwardchurch7991/";
+            $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
             $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
 
