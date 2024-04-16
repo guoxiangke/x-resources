@@ -829,29 +829,31 @@ final class Tpehoc{
         // 新媒体Espresso课程视频及讲义
         if($keyword == '781'){
             $items = [
-                "新媒体宣教课程1：人人宣教",
-                "新媒体宣教课程2：朋友圈是最大的禾场",
-                "新媒体宣教课程3：去中心化",
-                "新媒体宣教课程4：从善用到塑造",
-                "新媒体宣教课程5：突破同温层",
-                "新媒体宣教课程6：道成了肉身",
-                "新媒体宣教课程7：信、望、爱",
-                "新媒体宣教课程8：挑战与机会",
-                "新媒体宣教课程9：高度处境化",
-                "新媒体宣教课程10：标题党 蹭热点",
-                "新媒体宣教课程11：用爱心说诚实话",
-                "新媒体宣教课程12：宣教要成为一种生活方式",
+                "新媒体宣教Espresso1：人人宣教",
+                "新媒体宣教Espresso2：朋友圈是最大的禾场",
+                "新媒体宣教Espresso3：去中心化",
+                "新媒体宣教Espresso4：从善用到塑造",
+                "新媒体宣教Espresso5：突破同温层",
+                "新媒体宣教Espresso6：道成了肉身",
+                "新媒体宣教Espresso7：信、望、爱",
+                "新媒体宣教Espresso8：挑战与机会",
+                "新媒体宣教Espresso9：高度处境化",
+                "新媒体宣教Espresso 10：标题党 蹭热点",
+                "新媒体宣教Espresso11：用爱心说诚实话",
+                "新媒体宣教Espresso12：宣教要成为一种生活方式",
             ];
-            $index = now()->format('z') % 12;
+            $index = now()->subDay()->format('z') % 12;
             $item = $items[$index];
             $titles = explode('：', $item);
             $mp4 = "http://www.jtoday.org/wp-content/uploads/2024/01/". str_replace(' ','-',$item) .".mp4";
+            http://www.jtoday.org/wp-content/uploads/2024/01/%E6%96%B0%E5%AA%92%E4%BD%93%E5%AE%A3%E6%95%99%E8%AF%BE%E7%A8%8B10%EF%BC%9A%E6%A0%87%E9%A2%98%E5%85%9A-%E8%B9%AD%E7%83%AD%E7%82%B9.mp4
             $mp3 = "http://www.jtoday.org/wp-content/uploads/2022/08/mavmm0".str_pad($index+1, 2, "0", STR_PAD_LEFT).".mp3";
+            $title = str_replace('Espresso','课程',$titles[0]);
              $addition = [
                 'type' => 'link',
                 "data"=> [
                     "url" => $mp4,
-                    'title' => $titles[0],
+                    'title' => $title,
                     'description' => $titles[1],
                     'image' => "http://www.jtoday.org/wp-content/uploads/2022/08/%E6%96%B0%E5%AA%92%E4%BD%93%E5%AE%A3%E6%95%99_wechat_lesson.png",
                 ],
@@ -865,7 +867,7 @@ final class Tpehoc{
                 'type' => 'music',
                 "data"=> [
                     "url" => $mp3,
-                    'title' => $titles[0],
+                    'title' => $title,
                     'description' => $titles[1],
                 ],
                 'statistics' => [
