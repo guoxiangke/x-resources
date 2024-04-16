@@ -4,6 +4,7 @@ namespace App\Resources;
 use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Str;
 use ReflectionClass;
+use Carbon\Carbon;
 
 class Resources
 {
@@ -12,6 +13,7 @@ class Resources
         $paths = __DIR__.'/Resources';
         $namespace = app()->getNamespace();
         $res = null;
+        date_default_timezone_set('Asia/Shanghai');//config('app.timezone_display')
         foreach ((new Finder)->in($paths)->files() as $file) {
             $resource = $namespace.str_replace(
                 ['/', '.php'],

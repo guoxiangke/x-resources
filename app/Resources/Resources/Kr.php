@@ -15,7 +15,7 @@ final class Kr{
     {
         // 互联网人的资讯早餐（音频版）周1-5
         if($keyword == "8点1氪"){
-            $date = now()->tz(config('app.timezone_display'))->format('ymd');
+            $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.kr";
             $data = Cache::get($cacheKey, false);
             if(!$data){

@@ -22,7 +22,7 @@ final class FWD{
             $cacheKey = "xbot.keyword.".$keyword;
             $data = Cache::get($cacheKey, false);
             if(!$data){
-                $whichDay = now()->tz(config('app.timezone_display'));//->subDays();
+                $whichDay = now();//->subDays();
                 $year = $whichDay->format('Y');
                 $date = $whichDay->format('ymd');
 

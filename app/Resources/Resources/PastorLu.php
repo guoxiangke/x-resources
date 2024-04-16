@@ -81,7 +81,7 @@ final class PastorLu{
 
 
     private function _getData(){
-            $date = now()->tz(config('app.timezone_display'))->format('ymd');
+            $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -94,7 +94,7 @@ final class PastorLu{
                 preg_match_all($re, $html, $matches);
                 
 
-                $day = now()->tz(config('app.timezone_display'))->format('md');
+                $day = now()->format('md');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
@@ -166,7 +166,7 @@ final class PastorLu{
 
 
     private function _getLastSundayData(){
-            $date = now()->tz(config('app.timezone_display'))->format('ymd');
+            $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.PastorLu.lastSunday";
             $data = Cache::get($cacheKey, false);
             if(!$data){
@@ -577,7 +577,7 @@ final class PastorLu{
             "1225"=>["vid"=>"BeBJkNBaEJQ","title"=>"圣经里最后的祷告- 经文：启示录21-22章"],
             "1226"=>["vid"=>"1ivg__tN6vE","title"=>"终章完结"],
         ];
-        $dateStr = now()->tz(config('app.timezone_display'))->format('md');
+        $dateStr = now()->format('md');
         if(!isset($items[$dateStr])) {
             $item = last($items);
         }else{

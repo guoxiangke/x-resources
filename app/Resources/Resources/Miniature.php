@@ -13,7 +13,7 @@ final class Miniature{
 	public function _invoke($keyword)
 	{
         if($keyword == "miniature"){
-            $date = now()->tz(config('app.timezone_display'))->format('ymd');
+            $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.miniature";
             $data = Cache::get($cacheKey, false);
             if(!$data){

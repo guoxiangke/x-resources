@@ -13,7 +13,7 @@ final class OurDailyBread {
 	public function _invoke($keyword) {
         $data = [];
         if($keyword == 'odb'){
-          $now = now()->tz(config('app.timezone_display'));
+          $now = now();
           $s1 = $now->format('Y/m');
           $s2 = $now->format('m') . "-". $now->format('d') . "-".$now->format('y');
         	$url = "https://dzxuyknqkmi1e.cloudfront.net/odb/{$s1}/odb-{$s2}.mp3";
