@@ -54,7 +54,9 @@ final class LyAudio{
                 $data =[
                     'type' => 'music',
                     'data' => [
-                        "url" => $item['link'],
+                        "url" => str_replace('open.729ly.net/ly/audio/2024','aud.lthy.uk',$item['link']),
+                        // https://aud.lthy.uk/mw/mw240417.mp3
+                        // https://open.729ly.net/ly/audio/2024/mw/mw240417.mp3
                         'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program_name']).'-'.$item['play_at'],
                         'description' => str_replace('教会','JH',$item['description']),
                         'image' => "https://txly2.net/images/program_banners/{$code}_prog_banner_sq.png",
