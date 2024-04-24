@@ -15,6 +15,7 @@ final class Youtubes{
     // https://www.youtube.com/shorts/6vsRGl4IsMs?app=desktop
 	public function _invoke($keyword)
 	{
+        return ;
         if(preg_match('/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=)|youtube\.com\/shorts\/)([\w\-]{11})/', $keyword, $matches)){
             $vid = $matches[1];
             $videoInfo = Youtube::getVideoInfo($vid);
