@@ -270,7 +270,7 @@ final class FWD{
         if($keyword == '806'){
             $isSetOn = Cache::get($keyword, false);
             if(!$isSetOn) return ['nothing'=>'true']; // 必须设置ON后才发送，不定期更新
-            $response = Http::get("https://x-resource.51chat.net/youtube/get-last-by-playlist/PLLDxN82mMW3NrAoY-Nm6JYsk6ib5_5AZf");
+            $response = Http::get("https://x-resources.vercel.app/youtube/get-last-by-playlist/PLLDxN82mMW3NrAoY-Nm6JYsk6ib5_5AZf");
             $matches = $response->json();
             // return $matches['snippet'];
             $vid = $matches['contentDetails']['videoId'];
