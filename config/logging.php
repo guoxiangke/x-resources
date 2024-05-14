@@ -52,6 +52,13 @@ return [
 
     'channels' => [
 
+        'vercel' => [
+            'driver' => 'single',
+            'path' => '/tmp/laravel.log',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => false,
+        ],
+        
         'stack' => [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),
