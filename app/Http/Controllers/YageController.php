@@ -46,7 +46,7 @@ class YageController extends Controller
             foreach ($htmlTmp->getElementByClass('qui_list__item') as $e) {
                 $songid = $e->getAttribute('data-songid');
                 $title = $e->findOne('span.qui_list__txt')->text();
-                $path = $patharray[$songid];
+                $path = str_replace('http://','https://',$patharray[$songid]);
                 $mp3s[$songid] = compact('title','path');
             }
             Cache::put($cacheKey, $data);
