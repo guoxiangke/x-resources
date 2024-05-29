@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 use Madcoda\Youtube\Facades\Youtube;
 use App\Helper;
 use YouTube\YouTubeDownloader;
+use App\Http\Controllers\YageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,9 @@ Route::get('/resources/{keyword}', function (Request $request, $keyword){
     $resource = app("App\Resources\Resources");
     return $request->query()?$resource->_invoke($keyword . '?' . http_build_query($request->query())):$resource->_invoke($keyword);
 })->where('keyword', '.*');
+
+
+Route::get('/yage/{keyword}', [YageController::class, 'json']);
 
 
 // 百度茶室
