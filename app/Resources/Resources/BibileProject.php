@@ -39,8 +39,8 @@ final class BibileProject{
             	'type' => 'link',
                 "data"=> [
                     "url" => $mp4links[$offset],
-                    'title' => $titles[$offset],
-                    'description' => '来自 Bibile Project',
+                    'title' => "{$offset}/{$total} 【bibileproject】". $titles[$offset],
+                    'description' => "来自 Bibile Project",
                     'image' => $pnglinks[$offset]??'',
                 ],
                 'statistics' => [
