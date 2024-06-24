@@ -39,10 +39,6 @@ final class Youtubes{
                     "keyword" => $vid,
                     "type" => 'video',
                 ],
-                'addition'=> [
-                	'type' => 'text',
-            		'data' => ['content' => '5分钟后方可播放,24小时后过期!']
-                ],
             ];
             $data = [
                 'type' => 'music',
