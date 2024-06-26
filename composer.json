@@ -9,6 +9,7 @@
         "athlon1600/youtube-downloader": "^4.0",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.28",
         "madcoda/php-youtube-api": "^1.2",
         "metowolf/meting": "^1.5",
         "voku/simple_html_dom": "^4.8"

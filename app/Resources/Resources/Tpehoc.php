@@ -849,7 +849,7 @@ final class Tpehoc{
             http://www.jtoday.org/wp-content/uploads/2024/01/%E6%96%B0%E5%AA%92%E4%BD%93%E5%AE%A3%E6%95%99%E8%AF%BE%E7%A8%8B10%EF%BC%9A%E6%A0%87%E9%A2%98%E5%85%9A-%E8%B9%AD%E7%83%AD%E7%82%B9.mp4
             $mp3 = "http://www.jtoday.org/wp-content/uploads/2022/08/mavmm0".str_pad($index+1, 2, "0", STR_PAD_LEFT).".mp3";
             $title = str_replace('Espresso','课程',$titles[0]);
-             $addition = [
+            $addition = [
                 'type' => 'link',
                 "data"=> [
                     "url" => $mp4,
@@ -875,7 +875,7 @@ final class Tpehoc{
                     "keyword" => $keyword,
                     "type" => 'audio',
                 ],
-                'addition'=>$addition,
+                // 'addition'=>$addition,
             ];
             return $data;
         }
