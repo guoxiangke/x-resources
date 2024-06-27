@@ -34,7 +34,7 @@ final class MissionPathWay {
           $addition = [
             'type' => 'text',
             "data" => [
-                'content' => $description . "\r\n" .$item['content'],
+                'content' => $description . "\n" .$item['content'],
             ],
           ];
           $data = [
@@ -61,7 +61,8 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ca/{$item['links'][0]}.mp3";
+          $link = str_replace('+', '%2B', $item['links'][0]);
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -86,7 +87,8 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ma/{$item['links'][1]}.mp3";
+          $link = str_replace('+', '%2B', $item['links'][1]);
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ma/$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
