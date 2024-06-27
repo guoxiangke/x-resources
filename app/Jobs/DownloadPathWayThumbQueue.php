@@ -32,8 +32,11 @@ class DownloadPathWayThumbQueue implements ShouldQueue
         $item = $this->item;
 
         $storage = Storage::disk('r2-share');
+        // $storage = Storage::disk('local');
         $year = now()->format('Y');
-        $directory = "/missionpathway/images/devotional/";
+        $directory = "/missionpathway/" . dirname($item['thumbnail']);
+        // images/devotional/fire-03.jpg => images/devotional/
+        // images/prayer/2024/jun/2024-06-22.jpg => images/prayer/2024/jun/
         $storage->makeDirectory($directory);
         // $storage = Storage::disk('r2-tingdao');
         $url = "https://missionpathway.net/".$item['thumbnail'];

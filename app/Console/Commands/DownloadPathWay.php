@@ -41,13 +41,16 @@ class DownloadPathWay extends Command
             $month = now()->format('m'); // 获取当前月份
         }
         $year = now()->format('Y');
-        $url = "https://missionpathway.net/devotional-{$year}-{$month}.php";
         
         $storage = Storage::disk('r2-share');
         // $storage = Storage::disk('local');
-        $directory = "/missionpathway/{$year}/";
+
+        $type = 'devotional';
+        $directory = "/missionpathway/{$type}/{$year}/";
         $storage->makeDirectory($directory);
         
+        // download devotional
+        $url = "https://missionpathway.net/{$type}-{$year}-{$month}.php";
         $response = Http::get($url);
         $htmlTmp = HtmlDomParser::str_get_html($response->body());
 
@@ -65,9 +68,47 @@ class DownloadPathWay extends Command
             }
             $item = compact('title','thumbnail','content','links');
             DownloadPathWayThumbQueue::dispatch($item);
-            DownloadPathWayMp3Queue::dispatch($item);
+            DownloadPathWayMp3Queue::dispatch($item,$type);
             $items[] = $item;
         }
+        $storage->put("$directory/$month.json", json_encode($items));
+        
+        // download https://missionpathway.net/prayer-2024-06.php#27
+        $type = 'prayer';
+        $url = "https://missionpathway.net/{$type}-{$year}-{$month}.php";
+        $response = Http::get($url);
+        // dd($response->body());
+        $htmlTmp = HtmlDomParser::str_get_html($response->body());
+        $directory = "/missionpathway/{$type}/{$year}/";
+        $storage->makeDirectory($directory);
+
+        $items = [];
+        foreach ($htmlTmp->find('.row .span4 .post') as $html) {
+            // $day = $html->getAttribute("id");
+            $title =  $html->findOne('h2.post-title')->text()." (". $html->findOne('h3.post-title')->text().")";
+            $thumbnail =  $html->findOne('.post-thumbnail img')->getAttribute("src");
+            $content =  $html->findOne('.post-content')->text();
+            
+            $contents = explode('代祷文', $content);
+            if(!isset($contents[1])){
+                $contents = explode('你所在的国家', $content);
+                $content = trim($contents[0]);
+            }else{
+                $content = trim($contents[1]);
+            }
+            $content = str_replace(["\r", "\t", "\n"], "", $content);
+
+            $links = [];
+            foreach ($html->find("a") as $a) {
+                $links[] = basename(trim($a->getAttribute("href")));
+            }
+            $item = compact('title','thumbnail','content','links');
+            DownloadPathWayThumbQueue::dispatch($item);
+            DownloadPathWayMp3Queue::dispatch($item,$type);
+            $items[] = $item;
+
+        }
+        Log::error(__LINE__,[count($items)]);
         $storage->put("$directory/$month.json", json_encode($items));
         return Command::SUCCESS;
     }

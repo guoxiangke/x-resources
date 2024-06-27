@@ -17,12 +17,14 @@ class DownloadPathWayMp3Queue implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $item;
+    public $type;
     /**
      * Create a new job instance.
      */
-    public function __construct($item)
+    public function __construct($item,$type)
     {
         $this->item = $item;
+        $this->type = $type;
     }
 
     /**
@@ -31,13 +33,15 @@ class DownloadPathWayMp3Queue implements ShouldQueue
     public function handle(): void
     {
         $item = $this->item;
+        $type = $this->type;
 
         $storage = Storage::disk('r2-share');
+        // $storage = Storage::disk('local');
         $year = now()->format('Y');
 
         foreach ($item['links'] as $key => $link) {
             $lang = $key==0?'ca':'ma';
-            $directory = "/missionpathway/{$year}/{$lang}/";
+            $directory = "/missionpathway/{$type}/{$year}/{$lang}/";
             $storage->makeDirectory($directory);
             $link = "https://subsplash.com/crossroadspublications/mp3/mi/{$link}";
             $filename = "$directory/" . basename($link). '.mp3';//+hyzrpm6.mp3
