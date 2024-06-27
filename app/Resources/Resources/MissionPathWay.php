@@ -28,11 +28,18 @@ final class MissionPathWay {
 
           $description = $item['title'];
 
-          $image = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/{$item['thumbnail']}";
-          $url = '';
+          $image = env('R2_SHARE_VIDEO')."/missionpathway/{$item['thumbnail']}";
+          $url = "https://missionpathway.net/devotional-{$year}-{$month}.php";
+
+          $addition = [
+            'type' => 'text',
+            "data" => [
+                'content' => $description . "\r\n" .$item['content'],
+            ],
+          ];
           $data = [
             'type' => 'link',
-            "data"=> compact("url",'title','description','image'),
+            "data"=> compact("url",'title','description','image','addition'),
           ];
           $data['statistics'] = [
               'metric' => class_basename(__CLASS__),
@@ -53,7 +60,7 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/{$year}/ca/{$item['links'][0]}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ca/{$item['links'][0]}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -78,7 +85,7 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/{$year}/ma/{$item['links'][1]}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/{$year}/ma/{$item['links'][1]}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
