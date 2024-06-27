@@ -39,7 +39,8 @@ final class MissionPathWay {
           ];
           $data = [
             'type' => 'link',
-            "data"=> compact("url",'title','description','image','addition'),
+            "data" => compact("url",'title','description','image'),
+            'addition' => $addition,
           ];
           $data['statistics'] = [
               'metric' => class_basename(__CLASS__),
