@@ -20,7 +20,7 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/devotional/{$year}/{$month}.json";
-          $title = "宣教日引" . $now->format('md');
+          $title = "#宣教日引每日灵修" . $now->format('md');
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
@@ -106,7 +106,7 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/prayer/{$year}/{$month}.json";
-          $title = "宣教日引" . $now->format('md'). "\n每日为未得之民代祷";
+          $title = "#认识未得之民" . $now->format('md'). "\nby 宣教日引";
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
