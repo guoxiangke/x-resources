@@ -60,7 +60,6 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $link = str_replace('+', '%2B', $item['links'][0]);
           $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
@@ -86,7 +85,6 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $link = str_replace('+', '%2B', $item['links'][1]);
           $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ma/{$link}.mp3";
           $description = $item['title'];
           $data = [
@@ -146,7 +144,6 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $link = str_replace('+', '%2B', $item['links'][0]);
           $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
@@ -172,7 +169,6 @@ final class MissionPathWay {
           $item = $jsons[$index];
           // 0 ca 国语
           // 1 ma 粤语
-          $link = str_replace('+', '%2B', $item['links'][1]);
           $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ma/{$link}.mp3";
           $description = $item['title'];
           $data = [
