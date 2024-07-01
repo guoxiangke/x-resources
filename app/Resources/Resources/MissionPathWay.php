@@ -53,7 +53,7 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/devotional/{$year}/{$month}.json";
-          $title = "(国语)宣教日引" . $now->format('md');
+          $title = "宣教日引" . $now->format('md');
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
@@ -82,7 +82,7 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          $link = $item['links'][0];
+          $link = $item['links'][1];
           $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
@@ -164,7 +164,7 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          $link = $item['links'][0];
+          $link = $item['links'][1];
           $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
