@@ -53,15 +53,13 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/devotional/{$year}/{$month}.json";
-          $title = "宣教日引" . $now->format('md');
+          $title = "(国语)宣教日引" . $now->format('md');
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          // 0 ca 国语
-          // 1 ma 粤语
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ca/{$link}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ma/{$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -84,10 +82,8 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          // 0 ca 国语
-          // 1 ma 粤语
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ma/{$link}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -144,10 +140,8 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          // 0 ca 国语
-          // 1 ma 粤语
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ca/{$link}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ma/{$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -170,10 +164,8 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
-          // 0 ca 国语
-          // 1 ma 粤语
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ma/{$link}.mp3";
+          $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
           $data = [
             'type' => 'music',

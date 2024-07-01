@@ -67,7 +67,7 @@ class DownloadPathWay extends Command
             $links = [];
             foreach ($html->find(".post-header a") as $a) {
                 $link = basename(trim($a->getAttribute("href")));
-                if(!Str::startsWith('+', $link)) continue;
+                if(!Str::startsWith($link, '+')) continue;
                 $links[] = $link;
             }
             $item = compact('title','thumbnail','content','links');
@@ -106,7 +106,7 @@ class DownloadPathWay extends Command
             $links = [];
             foreach ($html->find("a") as $a) {
                 $link = basename(trim($a->getAttribute("href")));
-                if(!Str::startsWith('+', $link)) continue;
+                if(!Str::startsWith($link, '+')) continue;
                 $links[] = $link;
             }
             $item = compact('title','thumbnail','content','links');

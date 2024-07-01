@@ -40,7 +40,7 @@ class DownloadPathWayMp3Queue implements ShouldQueue
         $year = now()->format('Y');
 
         foreach ($item['links'] as $key => $link) {
-            $lang = $key==0?'ca':'ma';
+            $lang = $key==0?'ma':'ca';
             $directory = "/missionpathway/{$type}/{$year}/{$lang}/";
             $storage->makeDirectory($directory);
             $link = "https://subsplash.com/crossroadspublications/mp3/mi/{$link}";
