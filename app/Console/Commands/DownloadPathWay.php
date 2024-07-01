@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+
 use voku\helper\HtmlDomParser;
 
 use App\Jobs\DownloadPathWayThumbQueue;
@@ -42,8 +44,8 @@ class DownloadPathWay extends Command
         }
         $year = now()->format('Y');
         
-        $storage = Storage::disk('r2-share');
         // $storage = Storage::disk('local');
+        $storage = Storage::disk('r2-share');
 
         $type = 'devotional';
         $directory = "/missionpathway/{$type}/{$year}/";
@@ -64,13 +66,16 @@ class DownloadPathWay extends Command
 
             $links = [];
             foreach ($html->find(".post-header a") as $a) {
-                $links[] = basename(trim($a->getAttribute("href")));
+                $link = basename(trim($a->getAttribute("href")));
+                if(!Str::startsWith('+', $link)) continue;
+                $links[] = $link;
             }
             $item = compact('title','thumbnail','content','links');
             DownloadPathWayThumbQueue::dispatch($item);
             DownloadPathWayMp3Queue::dispatch($item,$type);
             $items[] = $item;
         }
+        Log::info(__CLASS__,['downloaded',count($items)]);
         $storage->put("$directory/$month.json", json_encode($items));
         
         // download https://missionpathway.net/prayer-2024-06.php#27
@@ -100,15 +105,16 @@ class DownloadPathWay extends Command
 
             $links = [];
             foreach ($html->find("a") as $a) {
-                $links[] = basename(trim($a->getAttribute("href")));
+                $link = basename(trim($a->getAttribute("href")));
+                if(!Str::startsWith('+', $link)) continue;
+                $links[] = $link;
             }
             $item = compact('title','thumbnail','content','links');
             DownloadPathWayThumbQueue::dispatch($item);
             DownloadPathWayMp3Queue::dispatch($item,$type);
             $items[] = $item;
-
         }
-        Log::error(__LINE__,[count($items)]);
+        Log::info(__CLASS__,['downloaded',count($items)]);
         $storage->put("$directory/$month.json", json_encode($items));
         return Command::SUCCESS;
     }

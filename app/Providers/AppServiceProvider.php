@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        date_default_timezone_set('Asia/Shanghai');
         Carbon::macro('inApplicationTimezone', function() {
             return $this->tz(config('app.timezone_display'));
         });
