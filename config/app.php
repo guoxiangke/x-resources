@@ -66,7 +66,8 @@ return [
     */
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
-    'timezone_display' => env('APP_TIMEZONE_DISPLAY', 'Asia/Shanghai'),
+    'display_timezone' => env('APP_DISPLAY_TIMEZONE', 'Asia/Shanghai'),
+    'schedule_timezone' => env('APP_SCHEDULE_TIMEZONE', 'Asia/Shanghai'),
     
 
     /*

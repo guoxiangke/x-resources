@@ -9,5 +9,29 @@ services:
       - "8001:8000"
     volumes:
       - ./:/app
-    entrypoint: php artisan octane:start --max-requests=1
-
+      - ./docker-start.sh:/usr/local/bin/start
+    entrypoint: /usr/local/bin/start
+    environment:
+      CONTAINER_ROLE: app
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+      - ./docker-start.sh:/usr/local/bin/start
+    environment:
+      CONTAINER_ROLE: scheduler
+    entrypoint: /usr/local/bin/start
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+      - ./docker-start.sh:/usr/local/bin/start
+    environment:
+      CONTAINER_ROLE: queue
+    entrypoint: /usr/local/bin/start

@@ -12,5 +12,3 @@ RUN install-php-extensions \
 COPY . /app
 
 WORKDIR /app
-
-ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
