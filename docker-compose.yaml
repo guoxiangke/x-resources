@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./:/app
+    entrypoint: php artisan octane:start --max-requests=1
+

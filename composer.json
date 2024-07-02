@@ -8,6 +8,7 @@
         "php": "^8.2",
         "athlon1600/youtube-downloader": "^4.0",
         "laravel/framework": "^11.0",
+        "laravel/octane": "^2.4",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.28",
         "madcoda/php-youtube-api": "^1.2",
