@@ -200,7 +200,12 @@ final class Hland{
                     'title' => $title,
                     'description' => $description,
                 ];
-                // Cache::put($cacheKey, $data);
+                
+                $data['statistics'] = [
+                    'metric' => class_basename(__CLASS__),
+                    "keyword" => $keyword,
+                ];
+                Cache::put($cacheKey, $data);
             }
             return [
                 "type"=>"music",
