@@ -205,7 +205,7 @@ final class Hland{
                     'metric' => class_basename(__CLASS__),
                     "keyword" => $keyword,
                 ];
-                Cache::put($cacheKey, $data);
+                Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
             }
             return [
                 "type"=>"music",
