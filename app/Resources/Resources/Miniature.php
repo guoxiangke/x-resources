@@ -36,5 +36,38 @@ final class Miniature{
                 "data"=> $data,
             ];
         }
+
+        // 784 scripture https://znsj.wxsorg.com/scripture.html
+        if($keyword == 784){
+            $cacheKey = "xbot.keyword.{$keyword}";
+            $data = Cache::get($cacheKey, false);
+            if(!$data){
+                $response = Http::get("https://v1api.bible.hi.cn/dailyScriptures/find/short?typeId=0&link=&rowSize=16&start=0");
+                $json =$response->json();
+                $src =  $json['data']['data'][0]['nsimg'];
+                $content = $json['data']['data'][0]['content'] . PHP_EOL . "「{$json['data']['data'][0]['title']}」";
+
+                $addition = [
+                    'type' => 'text',
+                    "data" => [
+                        'content' => "今日经文".PHP_EOL.$content,
+                    ],
+                ];
+                $data = [
+                    'type' => 'imageUrl',
+                    "data"=> [
+                        "url" => $src,
+                    ],
+                    'statistics' => [
+                        "keyword" => $keyword,
+                        "type" => 'image',
+                    ],
+                    'addition' => $addition,
+                ];
+                Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
+            }
+
+            return $data;
+        }
 	}
 }
