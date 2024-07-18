@@ -11,7 +11,8 @@ use voku\helper\HtmlDomParser;
 final class BibileProject{
 	public function _invoke($keyword)
 	{
-        if($keyword == "bibleproject"){
+        // 783 bibleproject
+        if($keyword == "bibleproject"||$keyword == 783){
             $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.bibileproject";
             $data = Cache::get($cacheKey, false);
