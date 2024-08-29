@@ -137,7 +137,7 @@ EOD;
                 $data =[
                     'type' => 'music',
                     'data' => [
-                        "url" => $item['link'],
+                        "url" => str_replace('https://open.savefamily.today/ly/audio/','https://d3ml8yyp1h3hy5.cloudfront.net/lts/',$item['link']),
                         'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program_name']).'-'.$item['play_at'],
                         'description' => str_replace('教会','JH',$item['description']),
                         'image' => "https://txly2.net/images/program_banners/{$code}_prog_banner_sq.png",
