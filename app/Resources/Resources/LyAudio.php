@@ -134,10 +134,13 @@ EOD;
                 $json = Http::get('https://open.729ly.net/api/program/'.$code)->json();
                 if(empty($json['data'])) return;
                 $item = $json['data'][0];
+                $url = str_replace('https://open.savefamily.today/','https://d3ml8yyp1h3hy5.cloudfront.net/',$item['link']);
+                if(in_array($keyword,[641,642,643,644,645]))
+                    $url = str_replace('https://open.savefamily.today/ly/audio/','https://d3ml8yyp1h3hy5.cloudfront.net/lts/',$item['link']);
                 $data =[
                     'type' => 'music',
                     'data' => [
-                        "url" => str_replace('https://open.savefamily.today/ly/audio/','https://d3ml8yyp1h3hy5.cloudfront.net/lts/',$item['link']),
+                        "url" => $url,
                         'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program_name']).'-'.$item['play_at'],
                         'description' => str_replace('教会','JH',$item['description']),
                         'image' => "https://txly2.net/images/program_banners/{$code}_prog_banner_sq.png",
