@@ -176,7 +176,7 @@ final class Hland{
 
 	            $albumIndex = substr($keyword, 3) - 1;//01-99
 	            $keys = array_keys($albums);
-	            $title = $keys[$albumIndex];
+	            $oriTitle = $keys[$albumIndex];
 	            $album = $albums[$keys[$albumIndex]];
 	            $total = count($album);
 	            $index = date('z')%$total;   //1-365
@@ -184,17 +184,18 @@ final class Hland{
 	            $keys = array_keys($album);
 	            $blogId = $keys[$index];
 	            $index++;
-				$title = "【{$index}/{$total}】" . $title;
+				$title = "【{$index}/{$total}】" . $oriTitle;
 	            $description = $album[$blogId];
 
 	            // dd($title, $blogId, $album[$blogId], $index, $total);
-	        	$audioUrl = Http::withHeaders([
-	                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:123.0) Gecko/20100101 Firefox/123.0',
-	                'Origin' => 'https://h.land'
-	            ])->post('https://h.land/goapi/blogs/getInfoPart',[
-	                'blogId'=>$blogId,
-	                'password'=> null,
-	            ])->json()['result']['audioUrl'];
+	        	// $audioUrl = Http::withHeaders([
+	            //     'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:123.0) Gecko/20100101 Firefox/123.0',
+	            //     'Origin' => 'https://h.land'
+	            // ])->post('https://h.land/goapi/blogs/getInfoPart',[
+	            //     'blogId'=>$blogId,
+	            //     'password'=> null,
+	            // ])->json()['result']['audioUrl'];
+	            $audioUrl = env('R2_SHARE_AUDIO')."/hland/$oriTitle/$blogId.mp3";
                 $data = [
                     "url" => $audioUrl,
                     'title' => $title,
