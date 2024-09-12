@@ -128,7 +128,7 @@ final class FWD{
             $day = now()->format('md');
 
             foreach($matches[1] as $key => $value){
-                if(Str::containsAll($value, ['主日崇拜'])){
+                if(Str::containsAll($value, ['主日崇拜','日出神話'])){
                     $lastSundayTitle = $value;
                     $lastSundayIndex = $key;
                     break;

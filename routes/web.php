@@ -56,3 +56,16 @@ Route::get('/youtube/get-last-by-playlist/{playlistId}', function ($playListId){
     $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
     return collect($all)->last();
 });
+
+Route::get('/cache/clear/all', function (){
+    Cache::flush();
+    return ['All Cache cleared!'=>'success'];
+});
+
+Route::get('/cache/clear/{key}', function ($key){
+    $cacheKey = "xbot.700.$key";
+    $before = Cache::get($cacheKey);
+    Cache::flush();
+    $after = Cache::get($cacheKey);
+    return ['before'=>$before,'after'=>$after];
+});
