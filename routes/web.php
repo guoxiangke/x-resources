@@ -69,3 +69,32 @@ Route::get('/cache/clear/{key}', function ($key){
     $after = Cache::get($cacheKey);
     return ['before'=>$before,'after'=>$after];
 });
+
+Route::get('/mi-music/ly/today', function (){
+  $now = date('Y-m-d');
+  $query = <<<GQL
+    {
+      ly_items(play_at: "$now 00:00:00") {
+        data {
+          id
+          link: path
+          program: ly_meta {
+            name
+          }
+        }
+      }
+    }
+  GQL;
+    $res = Http::withHeaders([
+        'Content-Type' => 'application/json',
+    ])->post('https://pms.lyadmin.net/graphql',[
+            'query' => $query
+    ]);
+    $name = "今日节目";
+    $musics = [];
+    foreach ($res['data']['ly_items']['data'] as $key => $item) {
+        $musics[] = ['name'=> $item['program']['name'],'url'=>$item['link']];
+    }
+    return compact('name','musics');
+
+});
