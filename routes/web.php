@@ -95,6 +95,6 @@ Route::get('/mi-music/ly/today', function (){
     foreach ($res['data']['ly_items']['data'] as $key => $item) {
         $musics[] = ['name'=> $item['program']['name'],'url'=>$item['link']];
     }
-    return [compact('name','musics')];
+    return response()->json([compact('name','musics')], 200, [], JSON_UNESCAPED_UNICODE);
 
 });
