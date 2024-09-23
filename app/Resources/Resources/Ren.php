@@ -31,20 +31,20 @@ final class Ren{
                 'title'=>"每日靈修",
                 'id'=>"PL942JJGZpDIcoTr2hqxbWoXZBYSBxZR29"
             ],
-            // '815'=>  [
-            //     'shorts' => true,
-            //     'title'=>"每日詩歌",
-            //     'id'=>"PL942JJGZpDIeF0f51w_ZxoYOAmfXOlEiR"
-            // ],
+            '815'=>  [
+                'shorts' => true,
+                'title'=>"每日詩歌",
+                'id'=>"PL942JJGZpDIeF0f51w_ZxoYOAmfXOlEiR"
+            ],
             '816'=>  [
                 'shorts' => true,
                 'title'=>"每日禱告",
                 'id'=>"PL942JJGZpDIfIollTxvXVxnR-b8HG0k6n"
             ],
-            // '817'=>  [
-            //     'title'=>"喻道故事",
-            //     'id'=>"PL942JJGZpDIeu1QnggkoXQ8lymaMbA3gT"
-            // ],
+            '817'=>  [
+                'title'=>"喻道故事",
+                'id'=>"PL942JJGZpDIeu1QnggkoXQ8lymaMbA3gT"
+            ],
             '818'=>  [
                 'shorts' => true,//both
                 'title'=>"美國政治小知識",
