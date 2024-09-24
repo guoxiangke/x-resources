@@ -25,7 +25,10 @@ class Helper
 	        $params['pageToken'] = $raw['info']['nextPageToken'] ?? null;
 	    } while ($params['pageToken'] !== null);
 
-	    return collect($playlistItems);
+	    return collect($playlistItems)->filter(function ($item) {
+	    	// dd($item);
+		    return $item->snippet->title != 'Private video';
+		});
 	}
 
 }

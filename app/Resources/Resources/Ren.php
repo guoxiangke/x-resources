@@ -78,14 +78,15 @@ final class Ren{
             $isShorts = $playlistTitles[$keyword]['shorts'];
             $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
 
-            $title = $all->first()->snippet->title;
-            $description = $all->first()->snippet->description;
+            $item = $all->first();
+            $title = $item->snippet->title;
+            $description = $item->snippet->description;
             
             // $title = str_replace($description,'',$title);
             // $title = explode('-',$title)[1];
             // $title = str_replace(' | ','',$title);
 
-            $vid = $all->first()->snippet->resourceId->videoId;
+            $vid = $item->snippet->resourceId->videoId;
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$playlistTitle}/{$vid}.mp4";
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
 
