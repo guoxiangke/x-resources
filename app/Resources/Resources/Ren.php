@@ -88,7 +88,7 @@ final class Ren{
 
             $vid = $item->snippet->resourceId->videoId;
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$playlistTitle}/{$vid}.mp4";
-            $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
+            $image = "https://wsrv.nl/?url=https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
             
             if(Str::startsWith($playlistTitle, '每日')){
                 $title = "$title";
