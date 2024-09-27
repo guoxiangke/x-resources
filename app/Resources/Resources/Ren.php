@@ -69,7 +69,8 @@ final class Ren{
             '821'=>  [
                 'shorts' => false,
                 'title'=>"我們看世界談話節目",
-                'id'=>"PL942JJGZpDIddB74WZ7X3CZQUJSpUealR"
+                'id'=>"PL942JJGZpDIddB74WZ7X3CZQUJSpUealR",
+                'order' => 'asc'
             ],
             '822'=>  [
                 'shorts' => false,
@@ -81,9 +82,11 @@ final class Ren{
             $playListId = $playlistTitles[$keyword]['id'];
             $playlistTitle = $playlistTitles[$keyword]['title'];
             $isShorts = $playlistTitles[$keyword]['shorts'];
+            $order = $playlistTitles[$keyword]['order']??false;
             $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
 
             $item = $all->first();
+            if($order) $item = $all->last();
             $title = $item->snippet->title;
             $description = $item->snippet->description;
             
