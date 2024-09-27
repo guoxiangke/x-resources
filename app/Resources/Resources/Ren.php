@@ -71,13 +71,13 @@ final class Ren{
                 'title'=>"我們看世界談話節目",
                 'id'=>"PL942JJGZpDIddB74WZ7X3CZQUJSpUealR"
             ],
-            '824'=>  [
+            '822'=>  [
                 'shorts' => false,
                 'title'=>"傳奇基督徒的二三事",
                 'id'=>"PL942JJGZpDIdm1vCiIjrj6pF5ZcwVVcw-"
             ],
         ];
-        if($keyword >= '813' && $keyword <= '821'){
+        if($keyword >= '813' && $keyword <= '829'){
             $playListId = $playlistTitles[$keyword]['id'];
             $playlistTitle = $playlistTitles[$keyword]['title'];
             $isShorts = $playlistTitles[$keyword]['shorts'];
@@ -142,16 +142,16 @@ final class Ren{
         #     "禱告睡眠音樂":"PL942JJGZpDIc2If_FgYxragz02cJHwm-y",
         # ];
         $playlistTitles = [
-            '822'=>  [
+            '830'=>  [
                 'title'=>"约翰福音的密码读书会",
                 'id'=>"PL942JJGZpDIeQKLByNTHavZ-M2gMtMN8s"
             ],
-            '823'=>  [
+            '831'=>  [
                 'title'=>"禱告睡眠音樂",
                 'id'=>"PL942JJGZpDIc2If_FgYxragz02cJHwm-y"
             ],
         ];
-        if($keyword >= '822' && $keyword <= '823'){
+        if($keyword >= '830' && $keyword <= '839'){
             $playListId = $playlistTitles[$keyword]['id'];
             $playlistTitle = $playlistTitles[$keyword]['title'];
             $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
