@@ -71,6 +71,11 @@ final class Ren{
                 'title'=>"我們看世界談話節目",
                 'id'=>"PL942JJGZpDIddB74WZ7X3CZQUJSpUealR"
             ],
+            '824'=>  [
+                'shorts' => false,
+                'title'=>"傳奇基督徒的二三事",
+                'id'=>"PL942JJGZpDIdm1vCiIjrj6pF5ZcwVVcw-"
+            ],
         ];
         if($keyword >= '813' && $keyword <= '821'){
             $playListId = $playlistTitles[$keyword]['id'];
