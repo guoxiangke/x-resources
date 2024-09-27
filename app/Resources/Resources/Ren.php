@@ -89,12 +89,19 @@ final class Ren{
             $vid = $item->snippet->resourceId->videoId;
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$playlistTitle}/{$vid}.mp4";
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
+            
+            if(Str::startsWith($playlistTitle, '每日')){
+                $title = "$title";
+                $description = '@LFC活力生命 每日更新';
+            }else{
+                $title = "【{$keyword}】$playlistTitle $title";
+            }
 
             $data = [
                 'type' => 'link',
                 'data' => [
                     "url" => $url,
-                    'title' => "【{$keyword}】$playlistTitle $title",
+                    'title' => $title,
                     'description' => $description,
                     'image' => $image,
                     'vid' => $vid,
