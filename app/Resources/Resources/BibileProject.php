@@ -11,7 +11,7 @@ use voku\helper\HtmlDomParser;
 final class BibileProject{
 	public function _invoke($keyword)
 	{
-        // 783 bibleproject
+        // 783 bibleproject 106!
         if($keyword == "bibleproject"||$keyword == 783){
             $date = now()->format('ymd');
             $cacheKey = "xbot.keyword.bibileproject";
@@ -39,7 +39,7 @@ final class BibileProject{
             return [
             	'type' => 'link',
                 "data"=> [
-                    "url" => $mp4links[$offset],
+                    "url" => env('R2_SHARE_VIDEO') ."/thebibleproject/". basename($mp4links[$offset]),
                     'title' => "{$offset}/{$total} 【bibileproject】". $titles[$offset],
                     'description' => "来自 Bibile Project",
                     'image' => $pnglinks[$offset]??'',
