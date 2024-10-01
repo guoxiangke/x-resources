@@ -888,6 +888,7 @@ final class Tpehoc{
                     "url" => $mp4Url,
                     'title' => '古德恩系統神學導讀 (張麟至牧師)',
                     'description' => "($index/$count)" . $title,
+                    'image' => 'https://www.alopen.org/portals/0/Images/PastorPaulChangPhoto.jpg',
                 ],
                 'statistics' => [
                     'metric' => 'Wayne',
