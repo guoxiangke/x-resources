@@ -873,9 +873,9 @@ final class Tpehoc{
                 "第四十一章-死亡與居間階段"=>"ch41-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%B8%80%E7%AB%A0-T.mp4",
                 "第五十四章-基督的再來－何時﹖如何﹖"=>"ch54-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
             ];
+            $total = count($items);
             $index = now()->format('z') % count($items);
             $count = 0;
-
             foreach ($items as $title => $url) {
                 if($count == $index) break;
                 $count ++;
@@ -887,7 +887,7 @@ final class Tpehoc{
                 "data"=> [
                     "url" => $mp4Url,
                     'title' => '古德恩系統神學導讀 (張麟至牧師)',
-                    'description' => "($index/$count)" . $title,
+                    'description' => "($index/$total)" . $title,
                     'image' => 'https://www.alopen.org/portals/0/Images/PastorPaulChangPhoto.jpg',
                 ],
                 'statistics' => [
@@ -902,7 +902,7 @@ final class Tpehoc{
                 "data"=> [
                     "url" => $mp4Url,//env('R2_SHARE_AUDIO') ."/Wayne/". str_replace('.mp4', '.mp3', $url),
                     'title' => '古德恩系統神學導讀 (張麟至牧師)',
-                    'description' => "($index/$count)" . $title,
+                    'description' => "($index/$total)" . $title,
                 ],
                 'addition'=>$addition,
             ];
