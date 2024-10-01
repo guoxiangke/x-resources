@@ -810,6 +810,108 @@ final class Tpehoc{
             ];
             return $data;
         }
+
+        // 古德恩系統神學導讀系列 (張麟至牧師)
+        // https://www.alopen.org/%E4%B8%8B%E8%BC%89/%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8#%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8%E5%B0%8E%E8%AE%80%E7%B3%BB%E5%88%97
+        if($keyword == '785'){
+            $items = [
+                "第一章-系統神學簡介"=>"ch01-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%80%E7%AB%A0-T.mp4",
+                "第二章-神的道"=>"ch02-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第三章-聖經乃正典"=>"ch03-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E7%AB%A0-T.mp4",
+                "第四章-聖經四特徵之一 權威性"=>"ch04-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E7%AB%A0-T.mp4",
+                "第五章-聖經的無誤性"=>"ch05-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E7%AB%A0-T.mp4",
+                "第六章-聖經四特徵之二 清晰性"=>"ch06-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%85%AD%E7%AB%A0-T.mp4",
+                "第七章-聖經四特徵之三 必須性"=>"ch07-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-T.mp4",
+                "第八章-聖經四特徵之四 充足性"=>"ch08-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%85%AB%E7%AB%A0-T.mp4",
+                "第九章-神的存在"=>"ch09-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B9%9D%E7%AB%A0-T.mp4",
+                "第十章-神的可知性"=>"ch10-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E7%AB%A0-T.mp4",
+                "第十一章-神的性格－不可交通的屬性"=>"ch11-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-T.mp4",
+                "第十二章-神的性格－可交通的屬性之一"=>"ch12-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第十三章-神的性格－可交通的屬性之二"=>"ch13-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-T.mp4",
+                "第十四章-神的三一－三位一體"=>"ch14-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
+                "第十五章-創造"=>"ch15-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0-T.mp4",
+                "第十六章-神的天命"=>"ch16-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-T.mp4",
+                "第十七章-神蹟"=>"ch17-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-T.mp4",
+                "第十八章-禱告"=>"ch18-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0-T.mp4",
+                "第十九章-天使"=>"ch19-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0-T.mp4",
+                "第二十章-撒但與鬼魔"=>"ch20-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0-T.mp4",
+                "第二十一章-人的受造"=>"ch21-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0-T.mp4",
+                "第二十二章-人有男性與女性"=>"ch22-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第二十三章-人性的本質"=>"ch23-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%AB%A0-T.mp4",
+                "第二十三章-歷史見證"=>"ch23-1-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%AB%A0%E6%AD%B7%E5%8F%B2%E8%A6%8B%E8%AD%89-T.mp4",
+                "第二十四章-罪"=>"ch24-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
+                "第二十五章-神人之間的約"=>"ch25-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E7%AB%A0-T.mp4",
+                "第二十六章-基督的身位"=>"ch26-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AD%E7%AB%A0-T.mp4",
+                "第二十六章-歷史見證"=>"ch26-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AD%E7%AB%A0-%E6%AD%B7%E5%8F%B2%E8%A6%8B%E8%AD%89-T.mp4",
+                "第二十七章-基督的救贖"=>"ch27-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%AB%A0-T.mp4",
+                "第二十七章-歷史見證"=>"ch27-1-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%AB%A0-%E6%AD%B7%E5%8F%B2%E8%A6%8B%E8%AD%89-T.mp4",
+                "第二十八章-基督的復活與升天"=>"ch28-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AB%E7%AB%A0-T.mp4",
+                "第二十九章-基督的職份"=>"ch29-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B9%9D%E7%AB%A0-T.mp4",
+                "第三十章-聖靈的工作"=>"ch30-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E7%AB%A0-T.mp4",
+                "第三十二章-揀選與棄絕"=>"ch32-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第三十二章-揀選與棄絕-歷史見證"=>"ch32-1-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%AB%A0-%E6%AD%B7%E5%8F%B2%E8%A6%8B%E8%AD%89-T.mp4",
+                "第三十三章-福音的呼召與有效的呼召"=>"ch33-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%AB%A0-T.mp4",
+                "第三十四章-重生"=>"ch34-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
+                "第三十五章-歸正－信心與悔改"=>"ch35-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%94%E7%AB%A0-T.mp4",
+                "第三十六章-稱義"=>"ch36-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E5%85%AD%E7%AB%A0-T.mp4",
+                "第三十七章-兒子的名分"=>"ch37-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%83%E7%AB%A0-T.mp4",
+                "第三十八章-成聖"=>"ch38-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E5%85%AB%E7%AB%A0-T.mp4",
+                "第三十九章-聖靈的洗與聖靈的充滿"=>"ch39-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E7%AB%A0-T.mp4",
+                ""=>"%E5%A2%9E%E7%AF%87-%E6%95%91%E6%81%A9%E7%9A%84%E7%A2%BA%E6%93%9A-T.mp4",
+                "第四十章-聖徒的恆忍"=>"ch40-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E7%AB%A0-T.mp4",
+                "第四十二章-得榮－得著復活的身體"=>"ch42-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第五十二章-靈恩﹕一般性的問題"=>"ch52-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E4%BA%8C%E7%AB%A0-T.mp4",
+                "第五十三章-靈恩﹕特定的恩賜"=>"ch53-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E4%B8%89%E7%AB%A0-T.mp4",
+                "第四十四章-教會的本質-標誌-目的"=>"ch44-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
+                "第四十五章-教會的純潔與合一"=>"ch45-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%BA%94%E7%AB%A0-T.mp4",
+                "第四十六章-教會的權力"=>"ch46-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E5%85%AD%E7%AB%A0-T.mp4",
+                "第四十七章-教會管治的體制"=>"ch47-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%B8%83%E7%AB%A0-T.mp4",
+                "第四十八章-神在教會內施恩之法"=>"ch48-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E5%85%AB%E7%AB%A0-T.mp4",
+                "第四十九章-洗禮"=>"ch49-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%B9%9D%E7%AB%A0-T.mp4",
+                "第五十章-主的晚餐"=>"ch50-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E7%AB%A0-T.mp4",
+                "第五十一章-崇拜"=>"ch51-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E4%B8%80%E7%AB%A0-T.mp4",
+                "第四十一章-死亡與居間階段"=>"ch41-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E5%9B%9B%E5%8D%81%E4%B8%80%E7%AB%A0-T.mp4",
+                "第五十四章-基督的再來－何時﹖如何﹖"=>"ch54-%E5%8F%A4%E5%BE%B7%E6%81%A9%E7%B3%BB%E7%B5%B1%E7%A5%9E%E5%AD%B8-%E7%AC%AC%E4%BA%94%E5%8D%81%E5%9B%9B%E7%AB%A0-T.mp4",
+            ];
+            $index = now()->format('z') % count($items);
+            $count = 0;
+
+            foreach ($items as $title => $url) {
+                if($count == $index) break;
+                $count ++;
+            }
+            $mp4Url = 'https://www.alopen.org/Portals/0/Downloads/'.$url;
+
+            $addition = [
+                'type' => 'link',
+                "data"=> [
+                    "url" => $mp4Url,
+                    'title' => '古德恩系統神學導讀 (張麟至牧師)',
+                    'description' => "($index/$count)" . $title,
+                ],
+                'statistics' => [
+                    'metric' => 'Wayne',
+                    "keyword" => $keyword,
+                    "type" => 'video',
+                ]
+            ];
+
+            $data =[
+                'type' => 'music',
+                "data"=> [
+                    "url" => $mp4Url,//env('R2_SHARE_AUDIO') ."/Wayne/". str_replace('.mp4', '.mp3', $url),
+                    'title' => '古德恩系統神學導讀 (張麟至牧師)',
+                    'description' => "($index/$count)" . $title,
+                ],
+                'addition'=>$addition,
+            ];
+            $data['statistics'] = [
+                'metric' => 'Wayne',
+                "keyword" => $keyword,
+                "type" => 'audio',
+            ];
+            return $data;
+        }
         
         if(Str::contains($keyword, '@AI助理')){
             // https://laravel-news.com/openai-for-laravel
