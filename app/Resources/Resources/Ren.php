@@ -106,6 +106,12 @@ final class Ren{
                 $title = "【{$keyword}】$playlistTitle $title";
             }
 
+            if($keyword == '813'){
+                $parts = explode('|', $title);
+                $title = trim(implode('|', array_slice($parts, 0, -1)));
+                // $description =  trim(last($parts));
+            }
+
             $data = [
                 'type' => 'link',
                 'data' => [
