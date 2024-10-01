@@ -36,11 +36,14 @@ final class BibileProject{
 			$mp4links = $data[2];
 			$pnglinks = $data[3];
 
+            $url = env('R2_SHARE_VIDEO') ."/thebibleproject/". basename($mp4links[$offset]);
+            $title =  "{$offset}/{$total} 【bibileproject】". $titles[$offset];
+
             return [
             	'type' => 'link',
                 "data"=> [
-                    "url" => env('R2_SHARE_VIDEO') ."/thebibleproject/". basename($mp4links[$offset]),
-                    'title' => "{$offset}/{$total} 【bibileproject】". $titles[$offset],
+                    "url" => $url,
+                    'title' => $title,
                     'description' => "来自 Bibile Project",
                     'image' => $pnglinks[$offset]??'',
                 ],
@@ -48,7 +51,20 @@ final class BibileProject{
                     'metric' => 'BibileProject',
                     "keyword" => $offset,
                     "type" => 'video',
-                ]
+                ],
+                'addition'=>[
+                    'type' => 'music',
+                    "data"=> [
+                        "url" => $url,
+                        'title' => $title,
+                        'description' => "来自 Bibile Project",
+                    ],
+                    'statistics' => [
+                        'metric' => 'BibileProject',
+                        "keyword" => $offset,
+                        "type" => 'audio',
+                    ],
+                ],
             ];
         }
 	}
