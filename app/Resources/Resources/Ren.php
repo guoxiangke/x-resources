@@ -96,9 +96,10 @@ final class Ren{
 
             $vid = $item->snippet->resourceId->videoId;
             $playlistTitleUrl = urlencode($playlistTitle);
-            $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$playlistTitleUrl}/{$vid}.mp4";
-            $image = "https://wsrv.nl/?url=https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
-            $image = "https://images.simai.life/images/2024/09/8d1078f5f65110e2379ae6ad42397728.JPG";
+            $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
+            $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
+            // $image = "https://images.simai.life/images/2024/09/8d1078f5f65110e2379ae6ad42397728.JPG";
+            // https://wsrv.nl/?url=
 
             if(Str::startsWith($playlistTitle, '每日')){
                 $title = "$title";
@@ -183,7 +184,7 @@ final class Ren{
             $description = $item->snippet->description;
 
             $playlistTitleUrl = urlencode($playlistTitle);
-            $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$playlistTitleUrl}/{$vid}.mp4";
+            $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
 
             $data = [
