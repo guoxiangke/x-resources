@@ -24,21 +24,25 @@ final class Ren{
             '813'=>  [
                 'shorts' => true,
                 'title'=>"每日經文",
+                'alias' => 'mrjw',
                 'id'=>"PL942JJGZpDIehJuBSaLIe_-irOegGih9M"
             ],
             '814'=>  [
                 'shorts' => true,
                 'title'=>"每日靈修",
+                'alias' => 'mrlx',
                 'id'=>"PL942JJGZpDIcoTr2hqxbWoXZBYSBxZR29"
             ],
             '815'=>  [
                 'shorts' => true,
                 'title'=>"每日詩歌",
+                'alias' => 'mrsg',
                 'id'=>"PL942JJGZpDIeF0f51w_ZxoYOAmfXOlEiR"
             ],
             '816'=>  [
                 'shorts' => true,
                 'title'=>"每日禱告",
+                'alias' => 'mrdg',
                 'id'=>"PL942JJGZpDIfIollTxvXVxnR-b8HG0k6n"
             ],
             '817'=>  [
@@ -97,6 +101,13 @@ final class Ren{
             $vid = $item->snippet->resourceId->videoId;
             $playlistTitleUrl = urlencode($playlistTitle);
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
+
+            // $keyword >= '813' && $keyword <= '816'
+            if(isset($playlistTitles[$keyword]['alias'])){
+                $alias = $playlistTitles[$keyword]['alias'];
+                $fileName = $alias.date('ymd').".mp4";
+                $url = env('R2_SHARE_AUDIO') . "/Ren/{$alias}/{$fileName}";
+            }
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
             // $image = "https://images.simai.life/images/2024/09/8d1078f5f65110e2379ae6ad42397728.JPG";
             // https://wsrv.nl/?url=
