@@ -102,12 +102,6 @@ final class Ren{
             $playlistTitleUrl = urlencode($playlistTitle);
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
 
-            // $keyword >= '813' && $keyword <= '816'
-            if(isset($playlistTitles[$keyword]['alias'])){
-                $alias = $playlistTitles[$keyword]['alias'];
-                $fileName = $alias.date('ymd').".mp4";
-                $url = env('R2_SHARE_AUDIO') . "/Ren/{$alias}/{$fileName}";
-            }
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
             // $image = "https://images.simai.life/images/2024/09/8d1078f5f65110e2379ae6ad42397728.JPG";
             // https://wsrv.nl/?url=
@@ -123,6 +117,15 @@ final class Ren{
                 $parts = explode('|', $title);
                 $title = trim(implode('|', array_slice($parts, 0, -1)));
                 // $description =  trim(last($parts));
+            }
+            // $keyword >= '813' && $keyword <= '816'
+            if(isset($playlistTitles[$keyword]['alias'])){
+                $alias = $playlistTitles[$keyword]['alias'];
+                $fileName = $alias.date('ymd').".mp4";
+                $url = env('R2_SHARE_AUDIO') . "/Ren/{$alias}/{$fileName}";
+
+                $description = $title;
+                $title = "【{$keyword}】@LFC活力生命";
             }
 
             $data = [
