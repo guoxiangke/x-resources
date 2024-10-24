@@ -59,6 +59,7 @@ Route::get('/youtube/get-last-by-playlist/{playlistId}', function ($playListId){
 Route::get('/youtube/get-all-by-playlist/{playlistId}', function ($playListId){
     $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
     return collect($all)->pluck('contentDetails.videoId');
+    //->take(3) ,'snippet.title' ->slice(-3)
 });
 
 Route::get('/cache/clear/all', function (){
@@ -72,4 +73,9 @@ Route::get('/cache/clear/{key}', function ($key){
     Cache::flush();
     $after = Cache::get($cacheKey);
     return ['before'=>$before,'after'=>$after];
+});
+
+Route::get('/vids/download', function () {
+    $key = 'youtube-vids-need-download';
+    return Cache::pull($key,[]);
 });

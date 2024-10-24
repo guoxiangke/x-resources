@@ -106,20 +106,31 @@ final class Ren{
             // $image = "https://images.simai.life/images/2024/09/8d1078f5f65110e2379ae6ad42397728.JPG";
             // https://wsrv.nl/?url=
 
+            if($keyword == '813'){
+                $parts = explode('|', $title);
+                $title = trim(implode('|', array_slice($parts, 0, -1)));
+                // $description =  trim(last($parts));
+            }
             if(Str::startsWith($playlistTitle, '每日')){
                 $title = "$title";
                 $description = '@LFC活力生命 每日更新';
             }else{
                 $title = "【{$keyword}】$playlistTitle $title";
             }
-
-            if($keyword == '813'){
-                $parts = explode('|', $title);
-                $title = trim(implode('|', array_slice($parts, 0, -1)));
-                // $description =  trim(last($parts));
-            }
+            $addition = [];
             // $keyword >= '813' && $keyword <= '816'
             if(isset($playlistTitles[$keyword]['alias'])){
+                $oriTitle = $title;
+                $parts = explode('|', $title);
+                $title = trim($parts[0]);
+                // $txt = trim($parts[1]);
+                $addition = [
+                    'type' => 'text',
+                    "data" => [
+                        'content' => $oriTitle,
+                    ],
+                ];
+
                 $alias = $playlistTitles[$keyword]['alias'];
                 $fileName = $alias.date('ymd').".mp4";
                 $url = env('R2_SHARE_AUDIO') . "/Ren/{$alias}/{$fileName}";
@@ -136,7 +147,8 @@ final class Ren{
                     'description' => $description,
                     'image' => $image,
                     'vid' => $vid,
-                ]
+                ],
+                'addition'=>$addition,
             ];
             $data['statistics'] = [
                 'metric' => class_basename(__CLASS__),
