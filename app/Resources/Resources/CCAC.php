@@ -10,11 +10,6 @@ use Illuminate\Support\Str;
 use voku\helper\HtmlDomParser;
 use GuzzleHttp\Client;
 
-use Symfony\Component\HttpClient\Psr18Client;
-use Tectalic\OpenAi\Authentication;
-// use Tectalic\OpenAi\Client;
-use Tectalic\OpenAi\Manager;
-use Tectalic\OpenAi\Models\Completions\CreateRequest;
 final class CCAC{
 	public function _invoke($keyword)
 	{

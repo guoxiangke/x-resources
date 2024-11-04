@@ -135,8 +135,8 @@ final class Ren{
                 $fileName = $alias.date('ymd').".mp4";
                 $url = env('R2_SHARE_AUDIO') . "/Ren/{$alias}/{$fileName}";
 
-                $description = $title;
-                $title = "【{$keyword}】@LFC活力生命";
+                $title = "【{$keyword}】";
+                $description = "@LFC活力生命";
             }
 
             $data = [
