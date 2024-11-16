@@ -127,7 +127,7 @@ final class Ren{
                 $addition = [
                     'type' => 'text',
                     "data" => [
-                        'content' => $oriTitle,
+                        'content' => "【{$keyword}】$oriTitle",
                     ],
                 ];
 
