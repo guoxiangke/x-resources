@@ -27,12 +27,6 @@ final class Ren{
                 'alias' => 'mrjw',
                 'id'=>"PL942JJGZpDIehJuBSaLIe_-irOegGih9M"
             ],
-            '814'=>  [
-                'shorts' => true,
-                'title'=>"每日靈修",
-                'alias' => 'mrlx',
-                'id'=>"PL942JJGZpDIcoTr2hqxbWoXZBYSBxZR29"
-            ],
             '815'=>  [
                 'shorts' => true,
                 'title'=>"每日詩歌",
@@ -82,7 +76,7 @@ final class Ren{
                 'id'=>"PL942JJGZpDIdm1vCiIjrj6pF5ZcwVVcw-"
             ],
         ];
-        if($keyword >= '813' && $keyword <= '829'){
+        if($keyword >= '813' && $keyword <= '829' && isset($playlistTitles[$keyword])){
             $playListId = $playlistTitles[$keyword]['id'];
             $playlistTitle = $playlistTitles[$keyword]['title'];
             $isShorts = $playlistTitles[$keyword]['shorts'];
