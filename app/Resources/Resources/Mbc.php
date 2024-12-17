@@ -21,7 +21,7 @@ final class Mbc{
                     "url" => "https://mbcotc.david777.net/devotional/CN/{$day}.html",
                     'title' => "慕安德烈每日靈修CN-{$day}" ,
                     'description' => '来源：大光傳宣教福音中心',
-                    'image' => 'image',
+                    'image' => 'https://images.simai.life/images/2024/12/bbae251f80b40a00a7ecefeb6d3c78c7.png',
                 ]
             ];
 
@@ -38,7 +38,7 @@ final class Mbc{
                     "url" => "https://mbcotc.david777.net/devotional/EN/{$day}.html",
                     'title' => "慕安德烈每日靈修EN-{$day}" ,
                     'description' => '来源：大光傳宣教福音中心',
-                    'image' => 'image',
+                    'image' => 'https://images.simai.life/images/2024/12/bbae251f80b40a00a7ecefeb6d3c78c7.png',
                 ]
             ];
 
