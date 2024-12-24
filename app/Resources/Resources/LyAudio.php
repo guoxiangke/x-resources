@@ -104,7 +104,7 @@ EOD;
             637 => 'tmw',
             638 => 'fp',
             639 => 'yb',
-            640 => "mpa",641 => "ltsnp",642 => "ltsdp1",643 => "ltsdp2",644 => "ltshdp1",645 => "ltshdp2",646 => "ds",647 => "hmw",648 => "wa",649 => "cwa",650 => "gt",651 => "ynf",652 => "gw",653 => "",654 => "it",655 => '',656 => '',657 => "ka",658 => '',659 => "pc",660 => "ut",661 => '',662 => '',663 => '',664 => "cs",665 => '',666 => '',667 => '',668 => "ec",669 => '',670 => '',671 => "vp",672 => "ls",673 => '',674 => "pt",675 => "wc",676 => "ttb",677 => "cttb",678 => "sz",679 => "sc",680 => "gf",681 => "fh",
+            640 => "mpa",641 => "ltsnp",642 => "ltstpa1",643 => "ltstpa2",644 => "ltstpb1",645 => "ltstpb2",646 => "ds",647 => "hmw",648 => "wa",649 => "cwa",650 => "gt",651 => "ynf",652 => "gw",653 => "",654 => "it",655 => '',656 => '',657 => "ka",658 => '',659 => "pc",660 => "ut",661 => '',662 => '',663 => '',664 => "cs",665 => '',666 => '',667 => '',668 => "ec",669 => '',670 => '',671 => "vp",672 => "ls",673 => '',674 => "pt",675 => "wc",676 => "ttb",677 => "cttb",678 => "sz",679 => "sc",680 => "gf",681 => "fh",
             682=>'caabg',
             683=>"caawm",
             684=>"caccp",
@@ -129,9 +129,11 @@ EOD;
                 if(empty($json['data'])) return;
                 $item = $json['data'][0];
                 $url = $item['link'];
+
                 $url = str_replace('https://y.lydt.work/storage/','https://d3ml8yyp1h3hy5.cloudfront.net/',$item['link']);
+                
                 if(in_array($keyword,[641,642,643,644,645]))
-                    $url = str_replace('/storage/ly/audio/','/lts/', $url);
+                    $url = str_replace('/ly/audio/','/lts/', $url);
                 $data =[
                     'type' => 'music',
                     'data' => [
