@@ -19,7 +19,7 @@ final class PastorLu{
             return $this->_getData();
         }
         if($keyword == 801){
-            return $this->getByDate();
+            // return $this->getByDate();
             $data = $this->_getData();
             $vid = $data['data']['vid'];
             $data['data']['url'] = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
@@ -94,7 +94,9 @@ final class PastorLu{
                 preg_match_all($re, $html, $matches);
                 
 
-                $day = now()->format('md');
+                // $day = now()->format('md')->timezone('asia/shanghai');
+                $day = now()->setTimezone('Asia/Shanghai')->format('md');
+                $dayStr = now()->setTimezone('Asia/Shanghai')->format('n月j日');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
@@ -102,7 +104,7 @@ final class PastorLu{
                 $lastSundayIndex = null;
                 foreach ($matches[2] as $key => $value) {
                     // "text":"0518-每日
-                    if(Str::startsWith($value, $day)){
+                    if(Str::contains($value, $day)){
                         $yesterdayTitle = $value;
                         $yesterdayIndex = $key;
                     }
@@ -115,15 +117,15 @@ final class PastorLu{
                 $vid = $matches[1][$yesterdayIndex];
                 $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
 
-                $yesterdayTitle = str_replace('-- 卢乾坤牧师 Pastor Paul Qiankun Lu', '-- 訂閱、點讚，轉發即是宣教', $yesterdayTitle);
-                $yesterdayTitle = str_replace($day.'-每日与主同行 –', '', $yesterdayTitle);
+                $yesterdayTitle = str_replace('2025卢牧师带你读新约-', '', $yesterdayTitle);
+                $yesterdayTitle = str_replace($day , '', $yesterdayTitle);
 
                 $data = [
                     'type' => 'link',
                     'data' => [
                         "url" => "https://www.youtube.com/embed/{$vid}",
-                        'title' => "每日与主同行-{$day}" ,
-                        'description' => $yesterdayTitle,
+                        'title' => "2025卢牧师带你读新约: {$dayStr} {$yesterdayTitle}" ,
+                        'description' => "{$yesterdayTitle} 2025卢牧师带你读新约: {$dayStr}",
                         'image' => $image,
                         'vid' => $vid,
                     ]
