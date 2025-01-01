@@ -20,7 +20,7 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/devotional/{$year}/{$month}.json";
-          $title = "宣教日引每日灵修" . $now->format('md');
+          $title = "#宣教日引每日灵修" . $now->format('md');
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
@@ -28,7 +28,8 @@ final class MissionPathWay {
 
           $description = $item['title'];
 
-          $image = env('R2_SHARE_VIDEO')."/missionpathway/{$item['thumbnail']}";
+          // $image = env('R2_SHARE_VIDEO')."/missionpathway/{$item['thumbnail']}";
+          $url = "https://missionpathway.net/{$item['thumbnail']}";
 
           $addition = [
             'type' => 'text',
@@ -59,7 +60,8 @@ final class MissionPathWay {
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ma/{$link}.mp3";
+          // $url = env('R2_SHARE_VIDEO')."/missionpathway/devotional/{$year}/ma/{$link}.mp3";
+          $url = "https://missionpathway.net/{$link}";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -71,7 +73,7 @@ final class MissionPathWay {
           ];
           return $data;
         }
-
+        // TODO delete!
         if($keyword == '809'){
           $now = now();
           $year = $now->format('Y');
@@ -102,7 +104,7 @@ final class MissionPathWay {
           $year = $now->format('Y');
           $month = $now->format('m');
           $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/missionpathway/prayer/{$year}/{$month}.json";
-          $title = "认识未得之民" . $now->format('md'). "\nby 宣教日引";
+          $title = "#认识未得之民" . $now->format('md'). "\nby 宣教日引";
           $index = (int)$now->format('d') - 1;//1-30 0-29
           
           $jsons = Http::get($url)->json();
@@ -110,7 +112,8 @@ final class MissionPathWay {
 
           $description = $item['title'];
 
-          $image = env('R2_SHARE_VIDEO')."/missionpathway/{$item['thumbnail']}";
+          // $image = env('R2_SHARE_VIDEO')."/missionpathway/{$item['thumbnail']}";
+          $url = "https://missionpathway.net/{$item['thumbnail']}";
 
           $addition = [
             'type' => 'text',
@@ -141,7 +144,7 @@ final class MissionPathWay {
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
           $link = $item['links'][0];
-          $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ma/{$link}.mp3";
+          $url = "https://missionpathway.net/{$link}";
           $description = $item['title'];
           $data = [
             'type' => 'music',
@@ -154,6 +157,7 @@ final class MissionPathWay {
           return $data;
         }
 
+        // TODO delete!
         if($keyword == '812'){
           $now = now();
           $year = $now->format('Y');
@@ -164,6 +168,7 @@ final class MissionPathWay {
           
           $jsons = Http::get($url)->json();
           $item = $jsons[$index];
+          dd($item);
           $link = $item['links'][1];
           $url = env('R2_SHARE_VIDEO')."/missionpathway/prayer/{$year}/ca/{$link}.mp3";
           $description = $item['title'];
