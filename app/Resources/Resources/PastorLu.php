@@ -8,12 +8,31 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use voku\helper\HtmlDomParser;
+use GuzzleHttp\Client;
 
 // https://www.youtube.com/@pastorpaulqiankunlu618/videos
 
 final class PastorLu{
 	public function _invoke($keyword)
 	{
+        if($keyword == "808"){
+            $client = new Client();
+            $url = 'https://docs.google.com/spreadsheets/d/1EfHYQmzTa94lJQl_c6LI28BiJsvKr_0cc1kt0fnEsOg/htmlview';
+            $response = $client->get($url);
+            $html = (string)$response->getBody();
+            $htmlTmp = HtmlDomParser::str_get_html($html);
+            $meta = [];
+            $dayStr = now()->format('n/j');
+            foreach ($htmlTmp->find('tbody tr') as $e) {
+                $cloumn1 = $e->find('td',0)->plaintext; //date
+                $cloumn2 = $e->find('td',1)->plaintext; //abc
+                if($cloumn1 == $dayStr) break;
+            }
+            return [
+                'type' => 'text',
+                "data" => ['content' => $cloumn2]
+            ];
+        }
         if($keyword == "PastorLu"){
             return $this->getByDate();
             return $this->_getData();
