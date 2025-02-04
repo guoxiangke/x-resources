@@ -77,76 +77,70 @@ final class Febc {
     ];
 
     if(in_array($keyword, array_keys($res))){
-        $cacheKey = "xbot.700.{$keyword}";
-        $data = Cache::get($cacheKey, false);
-        if($data) return $data;
-        if(!$data){
-            $res = $res[$keyword];
-            $response = Http::get(config('services.febc.all_json_domain')."all_{$res['code']}_songs.json");
-            $json =$response->json();
-            $jdata = last($json);
+        $res = $res[$keyword];
+        $response = Http::get(config('services.febc.all_json_domain')."all_{$res['code']}_songs.json");
+        $json =$response->json();
+        $jdata = last($json);
 
-            $dateStr = now()->format('ymd');
-            if(now()->isWeekend() && in_array($keyword,['708','710','711'])){
-               $dateStr = substr($jdata['time'], 2); 
-            }
+        $dateStr = now()->format('ymd');
+        if(now()->isWeekend() && in_array($keyword,['708','710','711'])){
+           $dateStr = substr($jdata['time'], 2); 
+        }
 
-            if(now()->isWeekday() && in_array($keyword,['712'])){
-               $dateStr = substr($jdata['time'], 2); 
-            }
+        if(now()->isWeekday() && in_array($keyword,['712'])){
+           $dateStr = substr($jdata['time'], 2); 
+        }
 
-            if(!(now()->isMonday() || now()->isTuesday()) && in_array($keyword,['713'])){
-               $dateStr = substr($jdata['time'], 2);
-            }
+        if(!(now()->isMonday() || now()->isTuesday()) && in_array($keyword,['713'])){
+           $dateStr = substr($jdata['time'], 2);
+        }
 
-            $title = "【{$keyword}】{$res['title']}-" . $dateStr;
-            $code = $res['code'];
-            $mp3Code = $res['code'];
-            $image = "https://d33tzbj8j46khy.cloudfront.net/{$code}.png";
-            $codeStr = "/{$code}/$mp3Code" . $dateStr;
-            // $mp3Domain = 'd20j6nxnxd2c4l';//depk9mke9ym92
-            // $mp3 = "https://{$mp3Domain}.cloudfront.net{$codeStr}.mp3";
-            $mp3Domain = 'https://aud.rblt.uk';
-            $mp3 = "{$mp3Domain}{$codeStr}.mp3";
+        $title = "【{$keyword}】{$res['title']}-" . $dateStr;
+        $code = $res['code'];
+        $mp3Code = $res['code'];
+        $image = "https://d33tzbj8j46khy.cloudfront.net/{$code}.png";
+        $codeStr = "/{$code}/$mp3Code" . $dateStr;
+        // $mp3Domain = 'd20j6nxnxd2c4l';//depk9mke9ym92
+        // $mp3 = "https://{$mp3Domain}.cloudfront.net{$codeStr}.mp3";
+        $mp3Domain = 'https://aud.rblt.uk';
+        $mp3 = "{$mp3Domain}{$codeStr}.mp3";
 
-            // https://depk9mke9ym92.cloudfront.net/     tltl/tlgr221203.mp3
-            // 不好意思，我们的手机app，国内有些地方使用有问题，所以做了新的配置：
-            // https://d20j6nxnxd2c4l.cloudfront.net/tllczy/tllczy230104.mp3
-            // https://d7jf0n9s4n8dc.cloudfront.net/html/tlgr/tlgr221203.html
+        // https://depk9mke9ym92.cloudfront.net/     tltl/tlgr221203.mp3
+        // 不好意思，我们的手机app，国内有些地方使用有问题，所以做了新的配置：
+        // https://d20j6nxnxd2c4l.cloudfront.net/tllczy/tllczy230104.mp3
+        // https://d7jf0n9s4n8dc.cloudfront.net/html/tlgr/tlgr221203.html
 
 
-            $data = [
-                'type' => 'music',
-                "data"=> [
-                    "url" => $mp3,
-                    'title' => $title,
-                    'description' => $jdata['title'],
+        $data = [
+            'type' => 'music',
+            "data"=> [
+                "url" => $mp3,
+                'title' => $title,
+                'description' => $jdata['title'],
+                'image' => $image,
+            ],
+        ];
+        if(0&&$jdata['hasArtistHtml']){
+            $codeStr = "/{$mp3Code}/$mp3Code" . $dateStr;
+            $addition = [
+                'type' => 'link',
+                'data' => [
                     'image' => $image,
+                    "url" => "https://dxd6tocqg9xyb.cloudfront.net/html{$codeStr}.html",
+                    'title' => $title,
+                    'description' => '节目文本-'. $jdata['title'],
                 ],
             ];
-            if(0&&$jdata['hasArtistHtml']){
-                $codeStr = "/{$mp3Code}/$mp3Code" . $dateStr;
-                $addition = [
-                    'type' => 'link',
-                    'data' => [
-                        'image' => $image,
-                        "url" => "https://dxd6tocqg9xyb.cloudfront.net/html{$codeStr}.html",
-                        'title' => $title,
-                        'description' => '节目文本-'. $jdata['title'],
-                    ],
-                ];
-                $data = array_merge($data,['addition'=>$addition]);
-                Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
-                return $data;
-            }
-
-            $data['statistics'] = [
-                'metric' => class_basename(__CLASS__),
-                "keyword" => $code,
-            ];
+            $data = array_merge($data,['addition'=>$addition]);
             Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
             return $data;
         }
+
+        $data['statistics'] = [
+            'metric' => class_basename(__CLASS__),
+            "keyword" => $code,
+        ];
+        return $data;
     }
     return null;
 	}
