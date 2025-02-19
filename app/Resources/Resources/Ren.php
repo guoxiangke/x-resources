@@ -80,6 +80,11 @@ final class Ren{
                 'title'=>"活力見證",
                 'id'=>"PL942JJGZpDIcGHU4XTiO3cLoUibfC05gf"
             ],
+            '824'=>  [
+                'shorts' => false,
+                'title'=>"孫老師夜話",
+                'id'=>"PLKpVlslvGNdjxJOrbOBwibe-MH7XeZfG2"
+            ],
         ];
         if($keyword >= '813' && $keyword <= '829' && isset($playlistTitles[$keyword])){
             $playListId = $playlistTitles[$keyword]['id'];
