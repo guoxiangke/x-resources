@@ -75,6 +75,11 @@ final class Ren{
                 'title'=>"傳奇基督徒的二三事",
                 'id'=>"PL942JJGZpDIdm1vCiIjrj6pF5ZcwVVcw-"
             ],
+            '823'=>  [
+                'shorts' => false,
+                'title'=>"活力見證",
+                'id'=>"PL942JJGZpDIcGHU4XTiO3cLoUibfC05gf"
+            ],
         ];
         if($keyword >= '813' && $keyword <= '829' && isset($playlistTitles[$keyword])){
             $playListId = $playlistTitles[$keyword]['id'];
