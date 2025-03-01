@@ -139,7 +139,7 @@ EOD;
                     'type' => 'music',
                     'data' => [
                         "url" => $url,
-                        'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program']['name']).'-'.$item['play_at'],
+                        'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program']['name']).' '.substr($item['play_at'],5,5),
                         'description' => str_replace('教会','JH',$item['description']),
                         'image' => "https://txly2.net/images/program_banners/{$code}_prog_banner_sq.png",
                     ],
