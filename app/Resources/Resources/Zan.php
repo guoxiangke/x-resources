@@ -81,7 +81,7 @@ final class Zan{
                 preg_match('/\d+/',$songs[$max],$matchs);
                 $id = $matchs[0];
                 // $mp3 = "https://play.readbible.cn/song/p/{$id}.mp3";
-                $mp3 = "https://play.zanmei.co/song/p/{$id}.mp3";
+                $mp3 = "https://play.izanmei.net/song/p/{$id}.mp3";
                 $data =[
                     "url" => $mp3,
                     'title' => $name,
