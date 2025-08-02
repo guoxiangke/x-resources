@@ -35,7 +35,7 @@ final class FWD{
 
 
                 $client = new Client();
-                $url = 'https://docs.google.com/spreadsheets/d/1xIdXT4mTKHRulwJeHkzL_1dUuSsirnriGNHMvlOfdCc/htmlview';
+                $url = 'https://docs.google.com/spreadsheets/u/0/d/1xIdXT4mTKHRulwJeHkzL_1dUuSsirnriGNHMvlOfdCc/htmlview/sheet?headers=true&gid=0';
                 $response = $client->get($url);
                 $html = (string)$response->getBody();
                 $htmlTmp = HtmlDomParser::str_get_html($html);
