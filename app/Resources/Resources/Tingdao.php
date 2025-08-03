@@ -397,8 +397,15 @@ final class Tingdao{
                 $album = $albums[$albumId%$total];
 
                 $id = $album['id'];
-                $url = "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.json";
-                $data = Http::get($url)->json();
+                // $url = "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.json";
+                // ?t= &sign= 
+                $response = Http::asForm()->post('https://www.tingdao.org/index/Sermon/details',[
+                    'id'=>$id,
+                    'order'=>'倒序',
+                ]);
+                //id.json
+                $data = $response->json();
+                // $data = Http::get($url)->json();
                 $count = count($data['list']);
                 $author = $data['details'][0]['author'];
                 $image = $data['details'][0]['img_url'];
