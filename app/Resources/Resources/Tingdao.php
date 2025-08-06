@@ -397,15 +397,15 @@ final class Tingdao{
                 $album = $albums[$albumId%$total];
 
                 $id = $album['id'];
-                // $url = "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.json";
+                $url = "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.json";
                 // ?t= &sign= 
-                $response = Http::asForm()->post('https://www.tingdao.org/index/Sermon/details',[
-                    'id'=>$id,
-                    'order'=>'倒序',
-                ]);
-                //id.json
-                $data = $response->json();
-                // $data = Http::get($url)->json();
+                // $response = Http::asForm()->post('https://www.tingdao.org/index/Sermon/details',[
+                //     'id'=>$id,
+                //     'order'=>'倒序',
+                // ]);
+                // //id.json
+                // $data = $response->json();
+                $data = Http::get($url)->json();
                 $count = count($data['list']);
                 $author = $data['details'][0]['author'];
                 $image = $data['details'][0]['img_url'];
@@ -419,13 +419,14 @@ final class Tingdao{
                 $item = $data['list'][$key];
                 $description = str_replace($title, '', $item['title']);
                 
-                $mp3 = $item['video_url'];
+                $mp3 = basename(parse_url($item['video_url'], PHP_URL_PATH));
+                $url = "https://tingdao.simai.life/{$id}/{$mp3}";
                 // $mp3 = "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.json";
                 // 'image' => "https://pub-6de883f3fd4a43c28675e9be668042c2.r2.dev/{$id}/{$id}.jpg",
 
                 $keyword = 't'.str_pad($albumId+1, 3, '0', STR_PAD_LEFT);
                 $data =[
-                    "url" => $mp3,
+                    "url" => $url,
                     'title' => "【{$keyword}】". $title,
                     'description' =>  ($key+1)."/$count 每日更新  $description",
                     'image' => $image ,
