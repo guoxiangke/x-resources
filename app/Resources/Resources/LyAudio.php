@@ -124,12 +124,12 @@ EOD;
             $data = Cache::get($code, false);//cc
             $isNoCache = in_array($code, ['cc','dy','gf']);
             if($isNoCache || !$data){
-                $json = Http::get('https://y.lydt.work/api/program/'.$code)->json();
+                $json = Http::get('https://x.lydt.work/api/program/'.$code)->json();
                 if(empty($json['data'])) return;
                 $item = $json['data'][0];
                 $url = $item['link'];
 
-                $url = str_replace('https://y.lydt.work/storage/','https://d3ml8yyp1h3hy5.cloudfront.net/',$item['link']);
+                $url = str_replace('https://x.lydt.work/storage/','https://d3ml8yyp1h3hy5.cloudfront.net/',$item['link']);
                 
                 if(in_array($keyword,[641,642,643,644,645]))
                     $url = str_replace('/ly/audio/','/lts/', $url);
