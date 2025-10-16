@@ -23,16 +23,18 @@ final class Youtubes{
             $vid = $matches[1];
             $videoInfo = Youtube::getVideoInfo($vid);
             $title = $videoInfo->snippet->title;
+            $description = $videoInfo->snippet->description;
+            $image = "https://i.ytimg.com/vi/{$vid}/maxresdefault.jpg";
+            $thumbnails = $videoInfo->snippet->thumbnails->medium->url ?? $image;
             $mp4 = env('R2_SHARE_VIDEO')."/tmpshare/{$vid}.mp4";
             $mp3 = env('R2_SHARE_AUDIO')."/tmpshare/{$vid}.m4a";
-            $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
             $addition = [
                 'type' => 'link',
                 "data"=> [
                     "url" => $mp4,
                     'title' => $title,
-                    'description' => '来自Youtube频道精选',
-                    'image' => $image,
+                    'description' => $description,
+                    'image' => $thumbnails,
                 ],
                 'statistics' => [
                     'metric' => 'youtube',
@@ -45,7 +47,8 @@ final class Youtubes{
                 "data"=> [
                     "url" => $mp3,
                     'title' => $title,
-                    'description' => '来自Youtube频道精选',
+                    'description' => $description,
+                    'image' => $thumbnails,
                 ],
                 'statistics' => [
                     'metric' => 'youtube',
