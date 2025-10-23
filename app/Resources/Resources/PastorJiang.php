@@ -18,13 +18,13 @@ final class PastorJiang{
             $baseUrl = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/youtube_channels/latest_update";
             
             // 获取videos和streams数据
-            $videosData = $this->fetchVideoData($baseUrl, $who, 'videos', $keyword);
+            // $videosData = $this->fetchVideoData($baseUrl, $who, 'videos', $keyword);
             $streamsData = $this->fetchVideoData($baseUrl, $who, 'streams', 887);
             
             // 构建最终结构
-            $videosData['addition']['addition'] = $streamsData;
+            // $videosData['addition']['addition'] = $streamsData;
             
-            return $videosData;
+            return $streamsData;
         }
 
         // 处理播放列表编号：901-987（901是最后一个播放列表）
