@@ -198,60 +198,64 @@ final class Ren{
                 'id'=>"PLZvcyxLkKfh-ocyx76-EvD-TD8CsCdhb_"
             ],
         ];
+
         if($keyword >= '830' && $keyword <= '839'){
             $playListId = $playlistTitles[$keyword]['id'];
             $playlistTitle = $playlistTitles[$keyword]['title'];
             $all = Helper::get_all_items_by_youtube_playlist_id($playListId);
             
             $total = $all->count();
-            $index = date('z')%$total;
-            if($keyword == 832) $index=0;
-            $item = $all[$index];
+            $index = date('z') % $total;
+            if($keyword == 832) $index = 0;
             
             if($offset){
-                $index=(int)$offset % $total;//0-8
-                if($index==0) $index=$total;
-                $item = $all[--$index];
-                $index++;
+                $index = (int)$offset % $total;
+                if($index == 0) $index = $total;
+                $index--;
             }
+            
+            $item = $all[$index];
+            $displayIndex = $index + 1; // 用于显示的索引 (1-based)
             
             $vid = $item->snippet->resourceId->videoId;
             $title = $item->snippet->title;
             $description = $item->snippet->description;
-            $who = $playlistTitles[$keyword]['who']??$who;
-
+            $who = $playlistTitles[$keyword]['who'] ?? $who;
             $playlistTitleUrl = urlencode($playlistTitle);
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
             $image = "https://i.ytimg.com/vi/{$vid}/sddefault.jpg";
-
+            
             $data = [
                 'type' => 'link',
                 'data' => [
                     "url" => $url,
                     'title' => "【{$keyword}】$playlistTitle $title ",
-                    'description' => "($index/$total) $description",
+                    'description' => "($displayIndex/$total) $description",
                     'image' => $image,
                     'vid' => $vid,
                 ]
             ];
+            
             $data['statistics'] = [
                 'metric' => class_basename(__CLASS__),
                 "keyword" => $keyword,
                 "type" => 'video',
             ];
-
+            
             // Add audio
-            $m4a = str_replace('.mp4','.m4a', $url);
+            $m4a = str_replace('.mp4', '.m4a', $url);
             $addition = $data;
             $addition['type'] = 'music';
-            $addition['data']['url']= $m4a;
+            $addition['data']['url'] = $m4a;
             $addition['statistics'] = [
                 'metric' => class_basename(__CLASS__),
                 "keyword" => $keyword,
                 "type" => 'audio',
             ];
+            
             $data['addition'] = $addition;
-            if($keyword == 832) $data=$addition;
+            if($keyword == 832) $data = $addition;
+            
             return $data;
         }
         return null;
