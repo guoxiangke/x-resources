@@ -192,6 +192,11 @@ final class Ren{
                 'title'=>"禱告睡眠音樂",
                 'id'=>"PL942JJGZpDIc2If_FgYxragz02cJHwm-y"
             ],
+            '832'=>  [
+                'title'=>"神學三十分",
+                'who' => "拜歐拉中心活力論壇",
+                'id'=>"PLZvcyxLkKfh-ocyx76-EvD-TD8CsCdhb_"
+            ],
         ];
         if($keyword >= '830' && $keyword <= '839'){
             $playListId = $playlistTitles[$keyword]['id'];
@@ -200,6 +205,7 @@ final class Ren{
             
             $total = $all->count();
             $index = date('z')%$total;
+            if($keyword == 832) $index=0;
             $item = $all[$index];
             
             if($offset){
@@ -212,6 +218,7 @@ final class Ren{
             $vid = $item->snippet->resourceId->videoId;
             $title = $item->snippet->title;
             $description = $item->snippet->description;
+            $who = $playlistTitles[$keyword]['who']??$who;
 
             $playlistTitleUrl = urlencode($playlistTitle);
             $url = env('R2_SHARE_AUDIO') . "/@{$who}/{$vid}.mp4";
@@ -244,6 +251,7 @@ final class Ren{
                 "type" => 'audio',
             ];
             $data['addition'] = $addition;
+            if($keyword == 832) $data=$addition;
             return $data;
         }
         return null;
