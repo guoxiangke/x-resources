@@ -206,7 +206,10 @@ final class Ren{
             
             $total = $all->count();
             $index = date('z') % $total;
-            if($keyword == 832) $index = 0;
+            if($keyword == 832) {
+                $all = $all->reverse()->values();
+                $index = $total - 1;
+            }
             
             if($offset){
                 $index = (int)$offset % $total;
