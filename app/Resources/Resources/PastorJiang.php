@@ -19,7 +19,7 @@ final class PastorJiang{
             
             // 获取videos和streams数据
             // $videosData = $this->fetchVideoData($baseUrl, $who, 'videos', $keyword);
-            $streamsData = $this->fetchVideoData($baseUrl, $who, 'streams', 887);
+            $streamsData = $this->fetchVideoData($baseUrl, $who, 'streams', $keyword);
             
             // 构建最终结构
             // $videosData['addition']['addition'] = $streamsData;
@@ -159,6 +159,34 @@ final class PastorJiang{
 
     private function get_all_playlist(){
         return [
+            [
+                "list"=>"PLS3hpSkHQMMNXfIKfBQ-06rj0tbVyIpn6",
+                "title"=>"202510全球医治大会"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMN0tic0nvNTNBHamIkKDdY2",
+                "title"=>"圣灵充满祷告会"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMMhavcSPR6RJN9zXDe1iAQ",
+                "title"=>"圣灵充满说方言"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMPPbAj0-Cf-sAV-XJBQL7oU",
+                "title"=>"基督与律法的区别"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMM_jiWidwt8dculOsNO1i7I",
+                "title"=>"属灵餐会系列"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMOS5ft7sE9W1_49ODq0h4pA",
+                "title"=>"婚姻家庭保卫战"
+            ],
+            [
+                "list"=>"PLS3hpSkHQMMPRBD4HLkakS9G_DDBLn1_F",
+                "title"=>"起点是复活"
+            ],
             [
                 "list"=>"PLS3hpSkHQMMNns4ajD3Fuazyl85wuMksZ",
                 "title"=>"身体灵化医治训练营"
