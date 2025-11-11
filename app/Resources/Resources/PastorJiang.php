@@ -28,7 +28,7 @@ final class PastorJiang{
         }
 
         // 处理播放列表编号：901-987（901是最后一个播放列表）
-        if(preg_match('/^(90[1-9]|9[1-8][0-9])(\d{2})?$/', $keyword, $matches)) {
+        if(preg_match('/^(90[1-9]|9[1-9][0-9])(\d{2})?$/', $keyword, $matches)) {
             $allPlayList = $this->get_all_playlist();
             $who = "@jiangyongliu";
             
