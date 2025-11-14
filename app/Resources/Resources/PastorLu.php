@@ -105,7 +105,9 @@ final class PastorLu{
             $data = Cache::get($cacheKey, false);
             if(!$data){
                 // http://chinesetodays.org/sites/default/files/devotion_audio/2017c/220127.mp3
-                $response = Http::get("https://www.youtube.com/@pastorpaulqiankunlu618/videos");
+                $response = Http::withHeaders([
+                    'Accept-Language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+                ])->get("https://www.youtube.com/@pastorpaulqiankunlu618/videos");
                 $html =$response->body();
 
                 
@@ -114,12 +116,12 @@ final class PastorLu{
                 
 
                 // $day = now()->format('md')->timezone('asia/shanghai');
-                $day = now()->setTimezone('Asia/Shanghai')->format('d');
+                $day = now()->setTimezone('Asia/Shanghai')->format('md');
                 $dayStr = now()->setTimezone('Asia/Shanghai')->format('n月j日');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
-                $yesterdayIndex = 0;
+                $yesterdayIndex = null;
                 $lastSundayIndex = null;
                 foreach ($matches[2] as $key => $value) {
                     // "text":"0518-每日
