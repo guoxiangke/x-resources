@@ -114,12 +114,12 @@ final class PastorLu{
                 
 
                 // $day = now()->format('md')->timezone('asia/shanghai');
-                $day = now()->setTimezone('Asia/Shanghai')->format('md');
+                $day = now()->setTimezone('Asia/Shanghai')->format('d');
                 $dayStr = now()->setTimezone('Asia/Shanghai')->format('n月j日');
                 
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
-                $yesterdayIndex = null;
+                $yesterdayIndex = 0;
                 $lastSundayIndex = null;
                 foreach ($matches[2] as $key => $value) {
                     // "text":"0518-每日
