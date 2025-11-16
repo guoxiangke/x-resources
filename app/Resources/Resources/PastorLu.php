@@ -41,7 +41,7 @@ final class PastorLu{
             // return $this->getByDate();
             $data = $this->_getData();
             $vid = $data['data']['vid'];
-            $data['data']['url'] = env('R2_SHARE_VIDEO')."/tmpshare/".$vid.".mp4";
+            $data['data']['url'] = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
 
             // Add audio
             $m4a = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".m4a";
