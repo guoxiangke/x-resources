@@ -139,6 +139,7 @@ final class PastorJiang{
         $isVideo = ($type === 'link');
         $urlEnv = $isVideo ? 'R2_SHARE_VIDEO' : 'R2_SHARE_AUDIO';
         $extension = $isVideo ? 'mp4' : 'm4a';
+        $who = $isVideo ? 'tmpshare' : $who;
         
         return [
             'type' => $type,
