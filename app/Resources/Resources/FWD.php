@@ -109,7 +109,8 @@ final class FWD{
                     "data" => [
                         'content' => $textDescD,
                     ],
-                    'addition' => $whichDay->isWeekend()?$additionc:$additiona,
+                    // 'addition' => $whichDay->isWeekend()?$additionc:$additiona,
+                    'addition' => $additionc,
                 ];
                 
                 Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
