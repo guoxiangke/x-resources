@@ -233,7 +233,7 @@ final class Ren{
                 'data' => [
                     "url" => $url,
                     'title' => "【{$keyword}】$playlistTitle $title ",
-                    'description' => "($displayIndex/$total) $description",
+                    'description' => $description,
                     'image' => $image,
                     'vid' => $vid,
                 ]
