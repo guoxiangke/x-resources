@@ -141,7 +141,7 @@ EOD;
                         "url" => $url,
                         'title' => "【{$keyword}】".str_replace('圣经','SJ',$item['program']['name']).' '.substr($item['play_at'],5,5),
                         'description' => str_replace('教会','JH',$item['description']),
-                        'image' => "",
+                        'image' => $image,
                     ],
                 ];
                 $data['statistics'] = [
