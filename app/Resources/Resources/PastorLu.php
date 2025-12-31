@@ -33,10 +33,6 @@ final class PastorLu{
                 "data" => ['content' => $cloumn2]
             ];
         }
-        if($keyword == "PastorLu"){
-            return $this->getByDate();
-            return $this->_getData();
-        }
         if($keyword == 801){
             // return $this->getByDate();
             $data = $this->_getData();
@@ -104,7 +100,6 @@ final class PastorLu{
             $cacheKey = "xbot.keyword.PastorLu";
             $data = Cache::get($cacheKey, false);
             if(!$data){
-                // http://chinesetodays.org/sites/default/files/devotion_audio/2017c/220127.mp3
                 $response = Http::withHeaders([
                     'Accept-Language' => 'zh-CN,zh;q=0.9,en;q=0.8',
                 ])->get("https://www.youtube.com/@pastorpaulqiankunlu618/videos");
@@ -117,8 +112,6 @@ final class PastorLu{
 
                 // $day = now()->format('md')->timezone('asia/shanghai');
                 $day = now()->setTimezone('Asia/Shanghai')->format('md');
-                $dayStr = now()->setTimezone('Asia/Shanghai')->format('n月j日');
-                
                 $lastSundayTitle = null;
                 $yesterdayTitle = null;
                 $yesterdayIndex = null;
@@ -138,15 +131,14 @@ final class PastorLu{
                 $vid = $matches[1][$yesterdayIndex];
                 $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
 
-                $yesterdayTitle = str_replace('2025卢牧师带你读新约-', '', $yesterdayTitle);
-                $yesterdayTitle = str_replace($day , '', $yesterdayTitle);
+                $yesterdayTitle = str_replace('每日圣经金句-', '', $yesterdayTitle);
 
                 $data = [
                     'type' => 'link',
                     'data' => [
                         "url" => "https://www.youtube.com/embed/{$vid}",
-                        'title' => "2025卢牧师带你读新约: {$dayStr} {$yesterdayTitle}" ,
-                        'description' => "{$yesterdayTitle} 2025卢牧师带你读新约: {$dayStr}",
+                        'title' => $yesterdayTitle ,
+                        'description' => "卢牧师 每日圣经金句 © 2026",
                         'image' => $image,
                         'vid' => $vid,
                     ]
