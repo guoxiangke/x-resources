@@ -15,23 +15,53 @@ use GuzzleHttp\Client;
 final class PastorLu{
 	public function _invoke($keyword)
 	{
+        $offset = substr($keyword, 3) ?: 0;
+        $keyword = substr($keyword, 0, 3);
         if($keyword == "808"){
-            $client = new Client();
-            $url = 'https://docs.google.com/spreadsheets/d/1EfHYQmzTa94lJQl_c6LI28BiJsvKr_0cc1kt0fnEsOg/htmlview';
-            $response = $client->get($url);
-            $html = (string)$response->getBody();
-            $htmlTmp = HtmlDomParser::str_get_html($html);
-            $meta = [];
-            $dayStr = now()->format('n/j');
-            foreach ($htmlTmp->find('tbody tr') as $e) {
-                $cloumn1 = $e->find('td',0)->plaintext; //date
-                $cloumn2 = $e->find('td',1)->plaintext; //abc
-                if($cloumn1 == $dayStr) break;
+            $day = now()->setTimezone('Asia/Shanghai')->format('md');
+            // 验证 $offset 是否为有效的月日格式
+            if($offset && strtotime("2025{$offset}") !== false){
+                $day = $offset;
             }
-            return [
-                'type' => 'text',
-                "data" => ['content' => $cloumn2]
+            $client = new Client();
+            $url = 'https://r2.savefamily.net/luNT.json';
+            $json = Http::get($url)->json();
+            // $html = $response->json();
+            
+            // dd($json[$day]);
+            $vid = $json[$day]['vid'];
+            $title = $json[$day]['title'];
+            $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
+
+            $data = [
+                'type' => 'link',
+                'data' => [
+                    "url" => "https://www.youtube.com/embed/{$vid}",
+                    'title' => $title ,
+                    'description' => "卢牧师带你读新约 © 2026",
+                    'image' => $image,
+                    'vid' => $vid,
+                ]
             ];
+
+            $data['statistics'] = [
+                'metric' => class_basename(__CLASS__),
+                "keyword" => $keyword,
+                "type" => 'video',
+            ];
+
+            $m4a = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".m4a";
+            $addition = $data;
+            $addition['type'] = 'music';
+            $addition['data']['url']= $m4a;
+            $addition['statistics'] = [
+                'metric' => class_basename(__CLASS__),
+                "keyword" => $keyword,
+                "type" => 'audio',
+            ];
+            $data['addition'] = $addition;
+
+            return $data;
         }
         if($keyword == 801){
             // return $this->getByDate();
