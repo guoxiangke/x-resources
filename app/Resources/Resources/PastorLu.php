@@ -33,10 +33,11 @@ final class PastorLu{
             $title = $json[$day]['title'];
             $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
 
+            $mp4 = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
             $data = [
                 'type' => 'link',
                 'data' => [
-                    "url" => "https://www.youtube.com/embed/{$vid}",
+                    "url" => $mp4,
                     'title' => $title ,
                     'description' => "卢牧师带你读新约 © 2026",
                     'image' => $image,
