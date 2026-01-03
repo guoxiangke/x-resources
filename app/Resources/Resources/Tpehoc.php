@@ -652,7 +652,7 @@ final class Tpehoc{
             $title = "為兒女禱告40天";
             $desc = "救恩之聲 靈修禱告";
             $prefix = "https://www.vos.org.tw/Datafile/UploadFile/Voice/70/";
-            $image = 'https://www.vos.org.tw/Datafile/Icon/20180424141532565.png';
+            $image = 'https://wsrv.nl/?url=https://i0.wp.com/cchappyfamily.plus/wp-content/uploads/2018/05/pray20180515.jpg';
             $items = [
                 '20190122153048.mp3',
                 '20190122153311.mp3',
@@ -696,10 +696,11 @@ final class Tpehoc{
                 '20190122154728.mp3'
             ];
             $index = now()->format('z') % 39;
+            $audioUrl = env('R2_SHARE_AUDIO')."/793/" . $items[$index++];
             $data =[
                 'type' => 'music',
                 "data"=> [
-                    "url" => $prefix . $items[$index++],
+                    "url" => $audioUrl,
                     'title' => "($index/40)" . $title,
                     'description' => $desc,
                     'image' => $image,
