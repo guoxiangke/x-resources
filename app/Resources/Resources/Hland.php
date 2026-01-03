@@ -77,17 +77,13 @@ final class Hland{
                 $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/hland/{$albumId}.json";
                 $json = Http::get($url)->json();
 
-                // $total = count($json);
-                $title = "【{$index}/{$total}】" . $title;
-
-
                 $description = $json[$index]['title'];;//subtitle
                 $blogId = basename(parse_url($json[$index]['url'], PHP_URL_PATH));
 
                 $audioUrl = env('R2_SHARE_AUDIO')."/hland/{$title}/$blogId.mp3";
                 $data = [
                     "url" => $audioUrl,
-                    'title' => $title,
+                    'title' => "【{$index}/{$total}】" . $title,
                     'description' => $description,
                     'image' => $album['image'],
                 ];
