@@ -17,16 +17,15 @@ use Tectalic\OpenAi\Manager;
 use Tectalic\OpenAi\Models\Completions\CreateRequest;
 use Madcoda\Youtube\Facades\Youtube;
 use Illuminate\Support\Facades\Redis;
+use Carbon\Carbon;
+
 final class Tpehoc{
 	public function _invoke($keyword)
 	{
         if($keyword == '799'){
-            $url = now()->subDays(1)->format('/Y/m/');
-
-            $url = 'https://www.tpehoc.org.tw'.$url;
+            $url = 'https://www.tpehoc.org.tw'. Carbon::now('Asia/Shanghai')->format('/Y/m/');
             $cacheKey = "xbot.keyword.".$keyword;
             $data = Cache::get($cacheKey, false);
-
             if(!$data){
                 $client = new Client();
                 $response = $client->get($url);//,['proxy' => 'socks5://54.176.71.221:8011']
@@ -54,16 +53,18 @@ final class Tpehoc{
                     "type" => 'link',
                 ];
 
-
+                $date = now()->format('Ymd');
+                $audioUrl = env('R2_SHARE_AUDIO')."/799/{$date}.mp3";
                 $data =[
                     'type' => 'music',
+                    'oriUrl' => $mp3,
                     "data"=> [
-                        "url" => $mp3,
+                        "url" => $audioUrl,
                         'title' => $title,
                         'description' => $description,
                         'image' => $image,
                     ],
-                    'addition'=>$addition,
+                    // 'addition'=>$addition,
                 ];
                 $data['statistics'] = [
                     'metric' => class_basename(__CLASS__),
