@@ -81,6 +81,8 @@ final class Hland{
                 $blogId = basename(parse_url($json[$index]['url'], PHP_URL_PATH));
 
                 $audioUrl = env('R2_SHARE_AUDIO')."/hland/{$title}/$blogId.mp3";
+
+                $index++;
                 $data = [
                     "url" => $audioUrl,
                     'title' => "【{$index}/{$total}】" . $title,
