@@ -14,6 +14,99 @@ final class Hland{
 	{
         // 782 
         // 78201-78299
+
+        // h46436
+        // h46436001
+        // h46436002
+
+        $albums = [
+            [
+                'id' => '46436',
+                'title' => '《灵魂幸存者》杨腓力（合集）',
+                'description' => '我们的生命常常需要从那些伟大人物的身上汲取力量。在《灵魂幸存者》中，著名作家杨腓力用十三篇精彩地人物素描，活画出对他的灵性生活影响至深的十三个人的生命故事：马丁·路德·金，甘地，托尔斯泰，陀思妥耶夫斯基，班德医生，卢云神父……他们并不一定是传统意义上的“信心伟人”，有的甚至也未必是基督徒，但是他们的怀疑和坚定，他们的软弱和勇敢，他们的瑕疵和“刺”，让我们恍悟：原来一个朝圣者的真实挣扎可以成为其他人安慰的源头和信仰的磐石，而基督徒生命的本相更是充实而丰盛的。《灵魂幸存者》不仅仅是杨腓力个人的信仰履历表，也是弟兄姐妹的灵性参考书，帮助我们能更深入地内省我们的信仰，更真实地面对我们的生命。',
+                'total' => '33',
+                'image' => 'https://media.h.land/prod/20220802-081010.828-small.jpg',
+            ],
+        ];
+        if(Str::startsWith($keyword,'h')){
+            // 移除 h 前缀
+            $content = substr($keyword, 1);
+            
+            // 从 $albums 中提取所有 ID
+            $albumIds = array_column($albums, 'id');
+            
+            // 按 ID 长度从长到短排序（避免 464 匹配到 46436）
+            usort($albumIds, function($a, $b) {
+                return strlen($b) - strlen($a);
+            });
+
+            $matchedId = null;
+            $chapterIndex = null;
+            
+            // 遍历 ID，找到第一个匹配的
+            foreach ($albumIds as $id) {
+                if (Str::startsWith($content, $id)) {
+                    $matchedId = $id;
+                    
+                    // 提取剩余部分（章节索引）
+                    $remainder = substr($content, strlen($id));
+                    
+                    if (!empty($remainder)) {
+                        // 验证剩余部分是否为 3 位数字
+                        if (preg_match('/^(\d+)$/', $remainder)) {
+                            $chapterIndex = (int)$remainder;
+                        }
+                    }
+                    
+                    break;
+                }
+            }
+
+            $album = collect($albums)->firstWhere('id', $matchedId);
+            
+            // $blogId
+            $title = $album['title'];
+            $albumId = $album['id'];
+            $total = $album['total'];
+
+            $index = $chapterIndex ?($chapterIndex-1)%$total: date('z')%$total;   //1-365
+
+            $cacheKey = "xbot.keyword.hland.{$albumId}.{$index}";
+            $data = Cache::get($cacheKey, false);
+            if(!$data){
+                $url = "https://pub-3813a5d14cba4eaeb297a0dba302143c.r2.dev/hland/{$albumId}.json";
+                $json = Http::get($url)->json();
+
+                // $total = count($json);
+                $title = "【{$index}/{$total}】" . $title;
+
+
+                $description = $json[$index]['title'];;//subtitle
+                $blogId = basename(parse_url($json[$index]['url'], PHP_URL_PATH));
+
+                $audioUrl = env('R2_SHARE_AUDIO')."/hland/{$title}/$blogId.mp3";
+                $data = [
+                    "url" => $audioUrl,
+                    'title' => $title,
+                    'description' => $description,
+                    'image' => $album['image'],
+                ];
+                
+                $data = [
+                    "type"=>"music",
+                    "data"=> $data
+                ];
+                $data['statistics'] = [
+                    'metric' => class_basename(__CLASS__),
+                    "keyword" => $albumId,
+                ];
+                Cache::put($cacheKey, $data, strtotime('tomorrow') - time());
+                return $data;
+            }
+            return $data;
+        }
+
+
         if(Str::startsWith($keyword,'782') && strlen($keyword) >= 3){
             $albums = [];
             // 《历史的轨迹 二千年史》祁伯尔 B.K.Kuiper（合集）58个音频 https://h.land/blog/204826
