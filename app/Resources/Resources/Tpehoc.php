@@ -26,7 +26,7 @@ final class Tpehoc{
             $url = 'https://www.tpehoc.org.tw'. Carbon::now('Asia/Shanghai')->format('/Y/m/');
             $cacheKey = "xbot.keyword.".$keyword;
             $data = Cache::get($cacheKey, false);
-            if(!$data){
+            if(1||!$data){
                 $client = new Client();
                 $response = $client->get($url);//,['proxy' => 'socks5://54.176.71.221:8011']
                 $html = (string)$response->getBody();
@@ -41,7 +41,7 @@ final class Tpehoc{
                 $description = Str::remove('&#8230;', $description);
                 
 
-                $image = 'https://lytx2021.s3-ap-southeast-1.amazonaws.com/share/799/blSf8E7UOiXCZwL.png';
+                $image = 'https://wsrv.nl/?url=i.ytimg.com/vi/JCNu1COWfJY/mqdefault.jpg';
                 $url = $htmlTmp->findOne('.post-content-outer h3 a')->getAttribute('href');
                 $addition =[
                     'type' => 'link',
@@ -51,6 +51,20 @@ final class Tpehoc{
                     'metric' => class_basename(__CLASS__),
                     "keyword" => $keyword,
                     "type" => 'link',
+                ];
+
+                $Ym = Carbon::now('Asia/Shanghai')->format('Ym');
+                $Ymd = Carbon::now('Asia/Shanghai')->format('Ymd');
+                $grace365Url = "https://nas.hvfhoc.com/grace365/{$Ym}/{$Ymd}.mp4";
+
+                $grace365 = [
+                    'type' => 'link',
+                    "data"=> [
+                        "url" => $grace365Url,
+                        'title' => "恩典365",
+                        'description' => $Ymd,
+                        'image' => "https://wsrv.nl/?url=tpehoc.org.tw/wp-content/uploads/2024/10/365-615x346.png",
+                    ],
                 ];
 
                 $date = now()->format('Ymd');
@@ -64,7 +78,7 @@ final class Tpehoc{
                         'description' => $description,
                         'image' => $image,
                     ],
-                    // 'addition'=>$addition,
+                    'addition'=> $grace365,
                 ];
                 $data['statistics'] = [
                     'metric' => class_basename(__CLASS__),
