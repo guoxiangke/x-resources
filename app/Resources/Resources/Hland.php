@@ -15,9 +15,9 @@ final class Hland{
         // 782 
         // 78201-78299
 
-        // h46436
-        // h46436001
-        // h46436002
+        // hl46436
+        // hl46436001
+        // hl46436002
 
         $albums = [
             [
@@ -28,7 +28,7 @@ final class Hland{
                 'image' => 'https://wsrv.nl/?url=media.h.land/prod/20220802-081010.828-small.jpg',
             ],
         ];
-        if(Str::startsWith($keyword,'h')){
+        if(Str::startsWith($keyword,'hl')){
             // 移除 h 前缀
             $content = substr($keyword, 1);
             
