@@ -30,7 +30,7 @@ final class Hland{
         ];
         if(Str::startsWith($keyword,'hl')){
             // 移除 h 前缀
-            $content = substr($keyword, 1);
+            $content = substr($keyword, 2);
             
             // 从 $albums 中提取所有 ID
             $albumIds = array_column($albums, 'id');
