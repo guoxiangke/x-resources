@@ -26,7 +26,7 @@ final class CCAC{
             $vid = $matches[2][$offset];
             $channelDomain = env('R2_SHARE_AUDIO')."/@cantoneseccac1966/";
             $url = $channelDomain.$vid.".mp4";
-            $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/IeDDmx.jpg';
 
             $data = [
                 'type' => 'link',

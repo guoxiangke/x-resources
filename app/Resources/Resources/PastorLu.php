@@ -31,7 +31,7 @@ final class PastorLu{
             // dd($json[$day]);
             $vid = $json[$day]['vid'];
             $title = $json[$day]['title'];
-            $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/Amn09V.jpg';
 
             $mp4 = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
             $data = [
@@ -160,7 +160,7 @@ final class PastorLu{
                 }
 
                 $vid = $matches[1][$yesterdayIndex];
-                $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
+                $image = 'https://r2.savefamily.net/uPic/2023/Amn09V.jpg';
 
                 $yesterdayTitle = str_replace('每日圣经金句-', '', $yesterdayTitle);
 
@@ -234,7 +234,7 @@ final class PastorLu{
                     }
                 }
 
-                $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
+                $image = 'https://r2.savefamily.net/uPic/2023/Amn09V.jpg';
                 $vid = $matches[1][$lastSundayIndex];
                 $descs = explode('：',$lastSundayTitle);
                 $data = [
@@ -632,7 +632,7 @@ final class PastorLu{
 
         $vid = $item['vid'];
         $url = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
-        $image = 'https://share.simai.life/uPic/2023/Amn09V.jpg';
+        $image = 'https://r2.savefamily.net/uPic/2023/Amn09V.jpg';
         $data = [
             'type' => 'link',
             'data' => [

@@ -65,6 +65,9 @@ final class Tpehoc{
                         'description' => $Ymd,
                         'image' => "https://wsrv.nl/?url=tpehoc.org.tw/wp-content/uploads/2024/10/365-615x346.png",
                     ],
+                    'metric' => class_basename(__CLASS__),
+                    "keyword" => '365',
+                    "type" => 'video',
                 ];
 
                 $date = now()->format('Ymd');
@@ -156,7 +159,7 @@ final class Tpehoc{
                 $data =[
                     'type' => 'music',
                     "data"=> [
-                        "url" => "https://r2share.simai.life/zgtai.com/mds/" . $index . ".mp3",
+                        "url" => "https://r2.savefamily.net/zgtai.com/mds/" . $index . ".mp3",
                         'title' => "($index/52)" . $item,
                         'description' => "罗门,门徒训练",
                         'image' => $image,

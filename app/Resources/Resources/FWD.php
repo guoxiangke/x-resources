@@ -31,7 +31,7 @@ final class FWD{
                 $mp3a = "{$domain}/".$year."/fwd{$date}_a.mp3";
                 $mp3b = "{$domain}/".$year."/fwd{$date}_b.mp3";
                 $mp3c = "{$domain}/".$year."/fwd{$date}_c.mp3";
-                $image = 'https://share.simai.life/uPic/2022/Of6qHa.jpg';
+                $image = 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/07/27/f8/0727f8f6-31db-b202-ffdf-209186d60c98/mza_14432271839699962252.jpg/600x600bb.webp';
 
 
                 $client = new Client();
@@ -139,7 +139,7 @@ final class FWD{
             $vid = $matches[2][$lastSundayIndex];
             $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
-            $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/IeDDmx.jpg';
 
             $descs = explode('【',$lastSundayTitle);
             $data = [
@@ -191,7 +191,7 @@ final class FWD{
             $vid = $matches[2][$lastSundayIndex];
             $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
-            $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/IeDDmx.jpg';
 
             $descs = explode('【',$lastSundayTitle);
             $data = [
@@ -237,7 +237,7 @@ final class FWD{
             $title = $matches[1][0];
             $channelDomain = env('R2_SHARE_AUDIO')."/@user-om4ne5gh7e/";
             $url = $channelDomain.$vid.".mp4";
-            $image = 'https://share.simai.life/uPic/2023/ZXRsRu.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/ZXRsRu.jpg';
             $data = [
                 'type' => 'link',
                 'data' => [
@@ -278,7 +278,7 @@ final class FWD{
             $title = $matches['snippet']['title'];
             $channelDomain = env('R2_SHARE_AUDIO')."/@fwdforwardchurch7991/";
             $url = $channelDomain.$vid.".mp4";
-            $image = 'https://share.simai.life/uPic/2023/IeDDmx.jpg';
+            $image = 'https://r2.savefamily.net/uPic/2023/IeDDmx.jpg';
 
             $titleArray = explode('｜', $title);
             $title = $titleArray[0];
