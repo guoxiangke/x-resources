@@ -33,7 +33,7 @@ final class PastorLu{
             $title = $json[$day]['title'];
             $image = 'https://r2.savefamily.net/uPic/2023/Amn09V.jpg';
 
-            $mp4 = env('R2_SHARE_AUDIO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
+            $mp4 = env('R2_SHARE_VIDEO')."/@pastorpaulqiankunlu618/".$vid.".mp4";
             $data = [
                 'type' => 'link',
                 'data' => [
